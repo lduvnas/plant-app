@@ -4,7 +4,7 @@ import * as S from "./styled";
 const LandingPage = () => {
   return (
     <S.Container>
-      <h1>LandingPage</h1>
+      <h2>LandingPage</h2>
     </S.Container>
   );
 };
