@@ -1,16 +1,23 @@
 import { Route, Switch } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
+import { AuthProvider } from "./contexts/AuthContext";
+import LoginForm from "./components/LoginForm";
+import SignupForm from "./components/SignupForm";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
-    <div>
-      <h1>Plant App</h1>
-      <Switch>
-        <Route path="/home" component={HomePage} />
-        <Route path="/" exact component={LandingPage} />
-      </Switch>
-    </div>
+    <AuthProvider>
+      <div>
+        <h1>Plant App</h1>
+        <Switch>
+          <PrivateRoute exact path="/" component={HomePage} />
+          <Route path="/signup" exact component={SignupForm} />
+          <Route path="/login" exact component={LoginForm} />
+        </Switch>
+      </div>
+    </AuthProvider>
   );
 }
 
