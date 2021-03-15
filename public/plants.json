@@ -1,0 +1,74 @@
+{
+  "plants": [
+    {
+      "id": 1,
+      "title": "Sunflower",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 2,
+      "title": "Cactus",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 3,
+      "title": "Aloevera",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 4,
+      "title": "plant 4",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 5,
+      "title": "plant 5",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 6,
+      "title": "plant 6",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 7,
+      "title": "plant 7",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 8,
+      "title": "plant 8",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 9,
+      "title": "plant 9",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    },
+    {
+      "id": 10,
+      "title": "plant 10",
+      "description": "lorum ipsum sit",
+      "temperature": "20-25",
+      "img": "https://source.unsplash.com/W1yjvf5idqA"
+    }
+  ]
+}
