@@ -1,4 +1,5 @@
 import { Route, Switch } from "react-router-dom";
+import "./App.css";
 import LandingPage from "./pages/LandingPage";
 import HomePage from "./pages/HomePage";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -9,7 +10,7 @@ import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <AuthProvider>
-      <div>
+      <div className="App">
         <h1>Plant App</h1>
         <Switch>
           <PrivateRoute exact path="/" component={HomePage} />
