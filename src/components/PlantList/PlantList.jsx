@@ -4,6 +4,7 @@ import * as S from "./styled";
 
 const PlantList = () => {
   let [plantList, setPlantList] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   function fetchPlants() {
     fetch("../../plants.json")
@@ -18,18 +19,35 @@ const PlantList = () => {
   return (
     <S.Container>
       <h1>PlantList</h1>
-      {plantList.map((item, index) => {
-        return (
-          <PlantItem
-            key={index}
-            id={index}
-            title={item.title}
-            description={item.description}
-            img={item.img}
-            temperature={item.temperature}
-          />
-        );
-      })}
+      <input
+        type="text"
+        placeholder="search"
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+      {plantList
+        .filter((item) => {
+          if (searchTerm == "") {
+            return item;
+          } else if (
+            item.title.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return item;
+          }
+        })
+        .map((item, index) => {
+          return (
+            <PlantItem
+              key={index}
+              id={index}
+              title={item.title}
+              description={item.description}
+              img={item.img}
+              temperature={item.temperature}
+            />
+          );
+        })}
     </S.Container>
   );
 };
