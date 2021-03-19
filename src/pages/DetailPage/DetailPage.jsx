@@ -30,6 +30,7 @@ const DetailPage = (props) => {
   }
   useEffect(() => {
     fetchPlant();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleOnClick() {
