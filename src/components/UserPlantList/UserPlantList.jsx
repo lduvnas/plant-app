@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const UserPlantList = () => {
   const [favoritesList, setFavoritesList] = useState([]);
+  const [plantData, setPlantData] = useState([]);
 
   const { currentUser } = useAuth();
 
@@ -22,6 +23,16 @@ const UserPlantList = () => {
       });
   }
 
+  // function fetchPlants() {
+  //   db.collection("plants")
+  //     .doc(favoritesList.id)
+  //     .get()
+  //     .then((doc) => {
+  //       console.log(doc.data());
+  //     });
+  // }
+
+  // fetchPlants();
   return (
     <S.Container>
       <h1>UserPlantList</h1>
