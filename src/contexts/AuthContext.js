@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../firebase";
+import firebase from "firebase/app";
 
 const AuthContext = React.createContext();
 
@@ -37,7 +38,16 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  const value = { currentUser, signup, login, logout };
+  function addToUserCollection(plantId) {
+    return db
+      .collection("users")
+      .doc(currentUser.uid)
+      .update({
+        favorites: firebase.firestore.FieldValue.arrayUnion(plantId),
+      });
+  }
+
+  const value = { currentUser, signup, login, logout, addToUserCollection };
 
   return (
     <AuthContext.Provider value={value}>
