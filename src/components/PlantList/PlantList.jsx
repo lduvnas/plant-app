@@ -25,7 +25,6 @@ const PlantList = () => {
   return (
     <S.Container>
       <h3>PlantList</h3>
-
       <input
         type="text"
         placeholder="search"
@@ -33,9 +32,17 @@ const PlantList = () => {
           setSearchTerm(event.target.value);
         }}
       />
-
-      {plantList &&
-        plantList.map((plant) => {
+      {plantList
+        .filter((plant) => {
+          if (searchTerm == "") {
+            return plant;
+          } else if (
+            plant.title.toLowerCase().includes(searchTerm.toLowerCase())
+          ) {
+            return plant;
+          }
+        })
+        .map((plant) => {
           return (
             <PlantItem
               key={plant.id}
@@ -47,29 +54,6 @@ const PlantList = () => {
             />
           );
         })}
-
-      {/* {plantList
-        .filter((item) => {
-          if (searchTerm == "") {
-            return item;
-          } else if (
-            item.title.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-            return item;
-          }
-        })
-        .map((item, index) => {
-          return (
-            <PlantItem
-              key={index}
-              id={index}
-              title={item.title}
-              description={item.description}
-              img={item.img}
-              temperature={item.temperature}
-            />
-          );
-        })} */}
     </S.Container>
   );
 };
