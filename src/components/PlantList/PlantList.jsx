@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import PlantItem from "../PlantItem/PlantItem";
+import { db } from "../../firebase";
 import * as S from "./styled";
 
 const PlantList = () => {
-  let [plantList, setPlantList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [plantList, setPlantList] = useState();
 
   function fetchPlants() {
-    fetch("../../plants.json")
-      .then((response) => response.json())
-      .then((data) => setPlantList(data.plants));
+    return db.collection("plants").onSnapshot((snapshot) => {
+      const plantData = [];
+      snapshot.forEach((doc) => plantData.push({ ...doc.data(), id: doc.id }));
+      console.log(plantData);
+      setPlantList(plantData);
+    });
   }
 
   useEffect(() => {
     fetchPlants();
   }, []);
 
+  console.log("PlantList: ", plantList);
+
   return (
     <S.Container>
-      <h1>PlantList</h1>
+      <h3>PlantList</h3>
+
       <input
         type="text"
         placeholder="search"
@@ -26,7 +33,22 @@ const PlantList = () => {
           setSearchTerm(event.target.value);
         }}
       />
-      {plantList
+
+      {plantList &&
+        plantList.map((plant) => {
+          return (
+            <PlantItem
+              key={plant.id}
+              id={plant.id}
+              title={plant.title}
+              description={plant.description}
+              img={plant.imageURL}
+              temperature={plant.temperature}
+            />
+          );
+        })}
+
+      {/* {plantList
         .filter((item) => {
           if (searchTerm == "") {
             return item;
@@ -47,7 +69,7 @@ const PlantList = () => {
               temperature={item.temperature}
             />
           );
-        })}
+        })} */}
     </S.Container>
   );
 };
