@@ -32,28 +32,29 @@ const PlantList = () => {
           setSearchTerm(event.target.value);
         }}
       />
-      {plantList
-        .filter((plant) => {
-          if (searchTerm == "") {
-            return plant;
-          } else if (
-            plant.title.toLowerCase().includes(searchTerm.toLowerCase())
-          ) {
-            return plant;
-          }
-        })
-        .map((plant) => {
-          return (
-            <PlantItem
-              key={plant.id}
-              id={plant.id}
-              title={plant.title}
-              description={plant.description}
-              img={plant.imageURL}
-              temperature={plant.temperature}
-            />
-          );
-        })}
+      {plantList &&
+        plantList
+          .filter((plant) => {
+            if (searchTerm == "") {
+              return plant;
+            } else if (
+              plant.title.toLowerCase().includes(searchTerm.toLowerCase())
+            ) {
+              return plant;
+            }
+          })
+          .map((plant) => {
+            return (
+              <PlantItem
+                key={plant.id}
+                id={plant.id}
+                title={plant.title}
+                description={plant.description}
+                img={plant.imageURL}
+                temperature={plant.temperature}
+              />
+            );
+          })}
     </S.Container>
   );
 };
