@@ -4,6 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useHistory } from "react-router-dom";
 import PlantList from "../../components/PlantList";
 import { db } from "../../firebase";
+import UserPlantList from "../../components/UserPlantList/UserPlantList";
 
 const HomePage = () => {
   const [error, setError] = useState();
@@ -40,6 +41,7 @@ const HomePage = () => {
       <h2>HomePage</h2>
       <strong>email: </strong> {currentUser.email}
       <button onClick={handleLogout}>Log out</button>
+      <UserPlantList />
       {favoritesList && favoritesList.length !== 0 ? <h3>Your garden:</h3> : ""}
       {favoritesList.length === 0 ? (
         <p>Inga plantor än</p>
