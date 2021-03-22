@@ -47,7 +47,13 @@ export function AuthProvider({ children }) {
       });
   }
 
-  const value = { currentUser, signup, login, logout, addToUserCollection };
+  const value = {
+    currentUser,
+    signup,
+    login,
+    logout,
+    addToUserCollection,
+  };
 
   return (
     <AuthContext.Provider value={value}>

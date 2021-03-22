@@ -9,9 +9,6 @@ const DetailPage = (props) => {
   const { currentUser, addToUserCollection } = useAuth();
   const id = props.match.params.id;
 
-  console.log("user: ", currentUser.uid);
-  console.log("plants id: ", id);
-
   function fetchPlant() {
     db.collection("plants")
       .doc(id)
