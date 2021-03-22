@@ -47,12 +47,22 @@ export function AuthProvider({ children }) {
       });
   }
 
+  function removeFromUserCollection(plantId) {
+    return db
+      .collection("users")
+      .doc(currentUser.uid)
+      .update({
+        favorites: firebase.firestore.FieldValue.arrayRemove(plantId),
+      });
+  }
+
   const value = {
     currentUser,
     signup,
     login,
     logout,
     addToUserCollection,
+    removeFromUserCollection,
   };
 
   return (

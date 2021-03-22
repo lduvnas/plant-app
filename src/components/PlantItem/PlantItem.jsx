@@ -5,10 +5,14 @@ import { useAuth } from "../../contexts/AuthContext";
 
 const PlantItem = ({ title, description, img, id, temperature }) => {
   const history = useHistory();
-  const { addToUserCollection } = useAuth();
+  const { addToUserCollection, removeFromUserCollection } = useAuth();
 
   function handleOnClick() {
     addToUserCollection(id);
+  }
+
+  function removeFromFavorites() {
+    removeFromUserCollection(id);
   }
 
   return (
@@ -18,6 +22,7 @@ const PlantItem = ({ title, description, img, id, temperature }) => {
       <p>{description}</p>
       <p>{temperature}</p>
       <button onClick={handleOnClick}>Add to favorites</button>
+      <button onClick={removeFromFavorites}>Remove from favorites</button>
       <button onClick={() => history.push(`/plants/${id}`)}>Read more</button>
     </S.Container>
   );
