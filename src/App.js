@@ -7,6 +7,7 @@ import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import PrivateRoute from "./components/PrivateRoute";
 import DetailPage from "./pages/DetailPage/DetailPage";
+import ExplorePage from "./pages/ExplorePage/ExplorePage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <div className="App">
           <h1>Plant App</h1>
           <Switch>
+            <PrivateRoute exact path="/explore" component={ExplorePage} />
             <PrivateRoute exact path="/" component={HomePage} />
             <PrivateRoute exact path="/plants/:id" component={DetailPage} />
             <Route path="/signup" exact component={SignupForm} />
