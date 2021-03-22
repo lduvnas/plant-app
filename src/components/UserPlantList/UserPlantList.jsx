@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as S from "./styled";
 import { db } from "../../firebase";
 import { useAuth } from "../../contexts/AuthContext";
+import { PlantContext } from "../../contexts/PlantContextProvider";
+import PlantItem from "../PlantItem/PlantItem";
 
 const UserPlantList = () => {
   const [favoritesList, setFavoritesList] = useState([]);
-  const [plantData, setPlantData] = useState([]);
+  const { plantListData } = useContext(PlantContext);
 
   const { currentUser } = useAuth();
 
@@ -18,32 +20,34 @@ const UserPlantList = () => {
       .doc(currentUser.uid)
       .get()
       .then((doc) => {
-        console.log("your garden: " + doc.data().favorites);
         setFavoritesList(doc.data().favorites);
       });
   }
 
-  // function fetchPlants() {
-  //   db.collection("plants")
-  //     .doc(favoritesList.id)
-  //     .get()
-  //     .then((doc) => {
-  //       console.log(doc.data());
-  //     });
-  // }
-
-  // fetchPlants();
+  console.log(favoritesList);
   return (
     <S.Container>
-      <h1>UserPlantList</h1>
-      {favoritesList && favoritesList.length !== 0 ? <h3>Your garden:</h3> : ""}
-      {favoritesList.length === 0 ? (
-        <p>Inga plantor än</p>
-      ) : (
-        favoritesList.map((item) => {
-          return <p>{item}</p>;
-        })
-      )}
+      <h3>UserPlantList</h3>
+      {favoritesList && favoritesList.length === 0 ? <p>No plants yet</p> : ""}
+      {plantListData &&
+        plantListData
+          .filter((plant) => {
+            if (favoritesList.includes(plant.id)) {
+              return plant;
+            }
+          })
+          .map((plant) => {
+            return (
+              <PlantItem
+                key={plant.id}
+                id={plant.id}
+                title={plant.title}
+                description={plant.description}
+                img={plant.imageURL}
+                temperature={plant.temperature}
+              />
+            );
+          })}
     </S.Container>
   );
 };
