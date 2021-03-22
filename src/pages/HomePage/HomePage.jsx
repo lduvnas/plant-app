@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import * as S from "./styled";
 import { useAuth } from "../../contexts/AuthContext";
 import { PlantContext } from "../../contexts/PlantContextProvider";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import PlantList from "../../components/PlantList";
 import UserPlantList from "../../components/UserPlantList/UserPlantList";
 
@@ -25,6 +25,7 @@ const HomePage = () => {
   return (
     <S.Container>
       <h2>HomePage</h2>
+      <Link to="/explore">Explore</Link>
       <strong>email: </strong> {currentUser.email}
       <button onClick={handleLogout}>Log out</button>
       <UserPlantList />

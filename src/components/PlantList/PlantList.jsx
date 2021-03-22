@@ -3,18 +3,9 @@ import PlantItem from "../PlantItem/PlantItem";
 import * as S from "./styled";
 
 const PlantList = ({ plantListData }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-
   return (
     <S.Container>
       <h3>PlantList</h3>
-      <input
-        type="text"
-        placeholder="search"
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
       {plantListData &&
         plantListData.map((plant) => {
           return (
