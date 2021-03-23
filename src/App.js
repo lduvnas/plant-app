@@ -8,13 +8,14 @@ import SignupForm from "./components/SignupForm";
 import PrivateRoute from "./components/PrivateRoute";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
+import { COLORS } from "./constants";
 
 function App() {
   return (
     <AuthProvider>
       <PlantContextProvider>
         <div className="App">
-          <h1>Plant App</h1>
+          <h1 style={{ color: COLORS.text }}>Plant App</h1>
           <Switch>
             <PrivateRoute exact path="/explore" component={ExplorePage} />
             <PrivateRoute exact path="/" component={HomePage} />
