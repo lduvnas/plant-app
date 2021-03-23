@@ -9,6 +9,7 @@ const UserPlantList = () => {
   return (
     <S.Container>
       <h3>UserPlantList</h3>
+      {/* Checks if theres any plants in favoritesListData */}
       {favoritesListData && favoritesListData.length === 0 ? (
         <p>No plants yet</p>
       ) : (
@@ -17,6 +18,7 @@ const UserPlantList = () => {
       {plantListData &&
         plantListData
           .filter((plant) => {
+            // Filter through plantListData and check if any IDs match what is in favoritesListData
             if (favoritesListData.includes(plant.id)) {
               return plant;
             }
