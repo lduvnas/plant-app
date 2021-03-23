@@ -5,6 +5,7 @@ import { PlantContext } from "../../contexts/PlantContextProvider";
 import { Link, useHistory } from "react-router-dom";
 import PlantList from "../../components/PlantList";
 import UserPlantList from "../../components/UserPlantList/UserPlantList";
+import Button from "../../components/Button";
 
 const HomePage = () => {
   const { plantListData } = useContext(PlantContext);
@@ -24,6 +25,7 @@ const HomePage = () => {
 
   return (
     <S.Container>
+      <Button title="testing" />
       <h2>HomePage</h2>
       <Link to="/explore">Explore</Link>
       <strong>email: </strong> {currentUser.email}
