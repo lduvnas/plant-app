@@ -4,7 +4,7 @@ import { useAuth } from "./AuthContext";
 
 export const PlantContext = createContext({});
 
-export default function JobContextProvider({ children }) {
+export default function PlantContextProvider({ children }) {
   const [plantListData, setPlantListData] = useState([]);
   const [favoritesListData, setFavoritesListData] = useState([]);
   const { currentUser } = useAuth();
@@ -29,8 +29,10 @@ export default function JobContextProvider({ children }) {
   }
 
   useEffect(() => {
-    fetchFavorites();
-    fetchPlants();
+    if (currentUser !== null) {
+      fetchFavorites();
+      fetchPlants();
+    }
   }, []);
 
   return (
