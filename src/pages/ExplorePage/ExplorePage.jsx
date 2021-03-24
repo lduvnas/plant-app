@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import * as S from "./styled";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 import PlantItem from "../../components/PlantItem/PlantItem";
+import Input from "../../components/Input";
 import { Link } from "react-router-dom";
 
 const ExplorePage = () => {
@@ -12,7 +13,7 @@ const ExplorePage = () => {
     <S.Container>
       <h1>ExplorePage</h1>
       <Link to="/">Go back</Link>
-      <input
+      <Input
         type="text"
         placeholder="search"
         onChange={(event) => {
@@ -25,9 +26,7 @@ const ExplorePage = () => {
             if (searchTerm === "") {
               return plant;
             } else if (
-              plant.title.description
-                .toLowerCase()
-                .includes(searchTerm.toLowerCase()) ||
+              plant.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
               plant.description.toLowerCase().includes(searchTerm.toLowerCase())
             ) {
               return plant;

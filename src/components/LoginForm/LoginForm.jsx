@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import * as S from "./styled";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
+import Button from "../Button";
+import Input from "../Input";
 
 const LoginForm = () => {
   const emailRef = useRef();
@@ -30,16 +32,19 @@ const LoginForm = () => {
       <h1>Login</h1>
       {error && <p>{error}</p>}
       <S.Form onSubmit={handleSubmit}>
-        <input type="email" placeholder="email" ref={emailRef} required />
-        <input
+        <Input
+          type="email"
+          placeholder="email"
+          refs={emailRef}
+          required="required"
+        />
+        <Input
           type="password"
           placeholder="password"
-          ref={passwordRef}
+          refs={passwordRef}
           required
         />
-        <button disabled={loading} type="submit">
-          Login
-        </button>
+        <Button disabled={loading} type="submit" title="Login" />
         Need an account? <Link to="/signup">Sign Up</Link>
       </S.Form>
     </S.Container>

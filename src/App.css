@@ -6,13 +6,13 @@
 }
 
 body {
-  background-color: #fbfbfb;
+  background-color: #f7f7f7;
   font-family: "Lato", sans-serif;
   color: #455b57;
 }
 
 .App {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   height: 100vh;
