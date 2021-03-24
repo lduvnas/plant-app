@@ -1,9 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap");
+
+#root {
+  height: 100%;
+}
+
+body {
+  background-color: #fbfbfb;
+  font-family: "Lato", sans-serif;
+  color: #455b57;
+}
+
 .App {
   display: flex;
   align-items: center;
-  flex-direction: column;
-  background-color: #fbfbfb;
-  font-family: "Lato", sans-serif;
+  justify-content: center;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #455b57;
 }
