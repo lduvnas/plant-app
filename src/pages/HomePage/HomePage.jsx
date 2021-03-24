@@ -12,8 +12,12 @@ const HomePage = () => {
     <S.Container>
       <Navbar />
       <h2>HomePage</h2>
-      <UserPlantList />
-      <PlantList plantListData={plantListData} />
+      <div>
+        <h3>UserPlantList</h3>
+        <UserPlantList />
+        <h3>PlantList</h3>
+        <PlantList plantListData={plantListData} />
+      </div>
     </S.Container>
   );
 };

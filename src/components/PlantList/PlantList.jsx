@@ -5,7 +5,6 @@ import * as S from "./styled";
 const PlantList = ({ plantListData }) => {
   return (
     <S.Container>
-      <h3>PlantList</h3>
       {/* Checks if there is something in plantListData,
        if so iterates over plantlist and put values in PlantItem */}
       {plantListData &&
