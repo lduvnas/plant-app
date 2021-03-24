@@ -39,7 +39,7 @@ const Navbar = () => {
 
         <S.Menu as="nav" ref={dropdownRef} clicked={isActive}>
           <S.ArrowUp />
-          <button onClick={handleLogout}>Log out</button>
+          <Link onClick={handleLogout}>Log out</Link>
         </S.Menu>
       </div>
     </S.Container>
