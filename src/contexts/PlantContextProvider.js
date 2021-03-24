@@ -29,11 +29,11 @@ export default function PlantContextProvider({ children }) {
   }
 
   useEffect(() => {
-    if (currentUser !== null) {
+    if (currentUser) {
       fetchFavorites();
       fetchPlants();
     }
-  }, []);
+  }, [currentUser]);
 
   return (
     <PlantContext.Provider
