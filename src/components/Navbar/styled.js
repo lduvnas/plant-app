@@ -20,7 +20,7 @@ export const Circle = styled.div`
   align-items: center;
   height: 120px;
   width: 120px;
-  background-color: ${COLORS.neutral_2};
+  background-color: ${COLORS.neutral_4};
   border-radius: 50%;
   left: 50%;
   top: 120px;
