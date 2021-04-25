@@ -1,41 +1,19 @@
-import React, { useState, useContext, useEffect } from "react";
+import React from "react";
 import * as S from "./styled";
 import { useHistory } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { PlantContext } from "../../contexts/PlantContextProvider";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const PlantItem = ({ title, careLevel, img, id, temperature }) => {
-  const [heart, setHeart] = useState("♡");
   const history = useHistory();
-  const { addToUserCollection, removeFromUserCollection } = useAuth();
-  const { favoritesListData } = useContext(PlantContext);
-
-  const isInFavorites = favoritesListData.includes(id);
-
-  useEffect(() => {
-    if (isInFavorites) {
-      setHeart("❤");
-    } else {
-      setHeart("♡");
-    }
-  }, [isInFavorites]);
-
-  function toggleFavorite() {
-    if (isInFavorites) {
-      removeFromUserCollection(id);
-    } else {
-      addToUserCollection(id);
-    }
-  }
 
   return (
     <S.Container>
+      <FavoriteButton plantId={id} />
       <S.Image src={img} />
       <h4>{title}</h4>
       <p>{careLevel}</p>
       <p>{temperature}</p>
       <button onClick={() => history.push(`/plants/${id}`)}>Read more</button>
-      <button onClick={toggleFavorite}>{heart}</button>
     </S.Container>
   );
 };
