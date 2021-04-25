@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 
-const PlantItem = ({ title, description, img, id, temperature }) => {
+const PlantItem = ({ title, careLevel, img, id, temperature }) => {
   const [heart, setHeart] = useState("♡");
   const history = useHistory();
   const { addToUserCollection, removeFromUserCollection } = useAuth();
@@ -32,7 +32,7 @@ const PlantItem = ({ title, description, img, id, temperature }) => {
     <S.Container>
       <S.Image src={img} />
       <h4>{title}</h4>
-      <p>{description}</p>
+      <p>{careLevel}</p>
       <p>{temperature}</p>
       <button onClick={() => history.push(`/plants/${id}`)}>Read more</button>
       <button onClick={toggleFavorite}>{heart}</button>

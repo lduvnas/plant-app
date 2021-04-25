@@ -38,8 +38,13 @@ const DetailPage = (props) => {
     <S.Container>
       <h1>{plant.title}</h1>
       <S.Image src={plant.imageURL} />
-      <p>{plant.description}</p>
       <p>{plant.temperature}</p>
+      <p>{plant.careLevel}</p>
+      <p>{plant.light}</p>
+      <p>{plant.water}</p>
+      <p>{plant.frequency}</p>
+      <p>{plant.description}</p>
+      <p>{plant.care}</p>
       <button onClick={handleOnClick}>Add to favorites</button>
       <Link to="/">Go back</Link>
     </S.Container>

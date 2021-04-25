@@ -14,9 +14,8 @@ const PlantList = ({ plantListData }) => {
               key={plant.id}
               id={plant.id}
               title={plant.title}
-              description={plant.description}
+              careLevel={plant.careLevel}
               img={plant.imageURL}
-              temperature={plant.temperature}
             />
           );
         })}
