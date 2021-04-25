@@ -12,7 +12,9 @@ export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  function signup(email, password) {
+  // const provider = new firebase.auth.GoogleAuthProvider();
+
+  function signupWithEmail(email, password) {
     return auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       //creates user collection with the users uniq id
       return db.collection("users").doc(cred.user.uid).set({
@@ -20,6 +22,15 @@ export function AuthProvider({ children }) {
       });
     });
   }
+
+  // function signupWithGoogle() {
+  //   return auth.signInWithPopup(provider).then((cred) => {
+  //     //creates user collection with the users uniq id
+  //     return db.collection("users").doc(cred.user.uid).set({
+  //       favorites: [],
+  //     });
+  //   });
+  // }
 
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
@@ -58,7 +69,8 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    signup,
+    signupWithEmail,
+    // signupWithGoogle,
     login,
     logout,
     addToUserCollection,
