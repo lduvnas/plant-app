@@ -31,6 +31,8 @@ const UserPlantList = () => {
                 description={plant.description}
                 img={plant.imageURL}
                 temperature={plant.temperature}
+                careLevel={plant.careLevel}
+                light={plant.light}
               />
             );
           })}

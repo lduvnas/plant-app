@@ -16,7 +16,7 @@ const HomePage = () => {
         <h3>UserPlantList</h3>
         <UserPlantList />
         <h3>PlantList</h3>
-        <PlantList plantListData={plantListData} />
+        {/* <PlantList plantListData={plantListData} /> */}
       </div>
     </S.Container>
   );
