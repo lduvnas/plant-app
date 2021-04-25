@@ -3,7 +3,7 @@ import * as S from "./styled";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDetectOutsideClick } from "../../useDetectOutsideClick";
-import avatar from "../../images/avatar.svg";
+import avatar from "../../assets/svg/avatar.svg";
 
 const Navbar = () => {
   const history = useHistory();
