@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import * as S from "./styled";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import Navbar from "../../components/Navbar";
+import calender from "../../assets/svg/calender.svg";
+import sun from "../../assets/svg/sun.svg";
+import water from "../../assets/svg/water.svg";
+import temperature from "../../assets/svg/temperature.svg";
+import { PlantContext } from "../../contexts/PlantContextProvider";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 
 const DetailPage = (props) => {
   const [plant, setPlant] = useState({});
-  const { currentUser, addToUserCollection } = useAuth();
+  const { addToUserCollection, removeFromUserCollection } = useAuth();
   const id = props.match.params.id;
 
   function fetchPlant() {
@@ -30,23 +37,47 @@ const DetailPage = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function handleOnClick() {
-    addToUserCollection(id);
-  }
-
   return (
     <S.Container>
-      <h1>{plant.title}</h1>
-      <S.Image src={plant.imageURL} />
-      <p>{plant.temperature}</p>
-      <p>{plant.careLevel}</p>
-      <p>{plant.light}</p>
-      <p>{plant.water}</p>
-      <p>{plant.frequency}</p>
-      <p>{plant.description}</p>
-      <p>{plant.care}</p>
-      <button onClick={handleOnClick}>Add to favorites</button>
-      <Link to="/">Go back</Link>
+      <Navbar />
+
+      <S.PlantDetailContainer>
+        <FavoriteButton plantId={id} />
+        <S.Image src={plant.imageURL} />
+        <S.PlantDetails>
+          <S.PlantTitle>{plant.title}</S.PlantTitle>
+          {/* <S.CareLabel>
+            <S.CardTitle>{plant.careLevel}</S.CardTitle>
+          </S.CareLabel> */}
+          <S.CardGrid>
+            <S.FrequencyCard>
+              <S.Icon src={calender} alt="calender" />
+              <S.CardTitle>Frequency</S.CardTitle>
+              <p>{plant.frequency}</p>
+            </S.FrequencyCard>
+            <S.TemperatureCard>
+              <S.Icon src={temperature} alt="temperature" />
+              <S.CardTitle>Temp.</S.CardTitle>
+              <p>{plant.temperature}</p>
+            </S.TemperatureCard>
+            <S.LightCard>
+              <S.Icon src={sun} alt="sun" />
+              <S.CardTitle>Light</S.CardTitle>
+              <p>{plant.light}</p>
+            </S.LightCard>
+            <S.WaterCard>
+              <S.Icon src={water} alt="water" />
+              <S.CardTitle>Water</S.CardTitle>
+              <p>{plant.water}</p>
+            </S.WaterCard>
+          </S.CardGrid>
+
+          <p>{plant.description}</p>
+          <S.CareTitle>Care tips</S.CareTitle>
+          <p>{plant.care}</p>
+          <Link to="/">Go back</Link>
+        </S.PlantDetails>
+      </S.PlantDetailContainer>
     </S.Container>
   );
 };
