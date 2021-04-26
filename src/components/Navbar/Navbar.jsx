@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useDetectOutsideClick } from "../../useDetectOutsideClick";
 import avatar from "../../assets/svg/avatar.svg";
+import plant from "../../assets/svg/plant.svg";
 
 const Navbar = () => {
   const history = useHistory();
@@ -28,6 +29,7 @@ const Navbar = () => {
     <S.Container>
       <h1>LOGO</h1>
       <S.Circle>
+        <img src={plant} alt="plant" />
         <Link to="/explore">Explore</Link>
       </S.Circle>
 
