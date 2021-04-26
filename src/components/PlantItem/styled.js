@@ -11,15 +11,27 @@ export const Image = styled.img`
   border-radius: 10px;
 `;
 
-export const LevelCard = styled.div``;
+export const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const LevelCard = styled.div`
+  color: #bdbdbd;
+`;
 
 export const LightCard = styled.div`
-  background-color: #f1f2f4;
+  background-color: #dbedea;
   border-radius: 5px;
-  /* padding: 15px 40px; */
+  padding: 5px 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* width: 60px; */
+`;
+
+export const Icon = styled.img`
+  height: 20px;
 `;
