@@ -9,6 +9,7 @@ export const Container = styled.div`
   min-height: 90px;
   background-color: ${COLORS.neutral_1};
   margin: 2em 0;
+  margin-bottom: 10em;
   border-radius: 8px;
   padding: 0.5em 3em;
 `;

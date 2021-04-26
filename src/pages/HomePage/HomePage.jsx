@@ -11,12 +11,11 @@ const HomePage = () => {
   return (
     <S.Container>
       <Navbar />
-      <h2>HomePage</h2>
       <div>
-        <h3>UserPlantList</h3>
+        <h2>Your Garden</h2>
         <UserPlantList />
-        <h3>PlantList</h3>
-        {/* <PlantList plantListData={plantListData} /> */}
+        <h2>Discover</h2>
+        <PlantList plantListData={plantListData} />
       </div>
     </S.Container>
   );
