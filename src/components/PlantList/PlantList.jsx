@@ -1,16 +1,23 @@
 import React, { useState } from "react";
-import PlantItem from "../PlantItem/PlantItem";
+import DiscoverItem from "../DiscoverItem/DiscoverItem";
+import discover from "../../assets/svg/discover.svg";
+
 import * as S from "./styled";
 
 const PlantList = ({ plantListData }) => {
+  const newArray = plantListData
+    .sort(() => Math.random() - Math.random())
+    .slice(0, 5);
+
   return (
     <S.Container>
       {/* Checks if there is something in plantListData,
        if so iterates over plantlist and put values in PlantItem */}
+      <S.Icon src={discover} alt="" />
       {plantListData &&
-        plantListData.map((plant) => {
+        newArray.map((plant) => {
           return (
-            <PlantItem
+            <DiscoverItem
               key={plant.id}
               id={plant.id}
               title={plant.title}
