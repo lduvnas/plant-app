@@ -11,11 +11,18 @@ import temperature from "../../assets/svg/temperature.svg";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 import ReactLoading from "react-loading";
+import { useSpring } from "react-spring";
 
 const DetailPage = (props) => {
   const [plant, setPlant] = useState({});
   const { addToUserCollection, removeFromUserCollection } = useAuth();
   const id = props.match.params.id;
+
+  const animationProps = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    delay: 800,
+  });
 
   function fetchPlant() {
     db.collection("plants")
@@ -42,7 +49,7 @@ const DetailPage = (props) => {
     <S.Container>
       <Navbar />
 
-      <S.PlantDetailContainer>
+      <S.PlantDetailContainer style={animationProps}>
         <FavoriteButton plantId={id} />
         {plant.imageURL ? (
           <S.Image src={plant.imageURL} />

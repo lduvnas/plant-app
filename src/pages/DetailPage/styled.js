@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { animated } from "react-spring";
 
 export const CardStyle = css`
   background-color: #f1f2f4;
@@ -49,7 +50,7 @@ export const Image = styled.img`
   border-radius: 10px;
 `;
 
-export const PlantDetailContainer = styled.div`
+export const PlantDetailContainer = styled(animated.div)`
   width: 1000px;
   display: flex;
   flex-direction: row;

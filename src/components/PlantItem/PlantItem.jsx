@@ -5,9 +5,15 @@ import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import sunny from "../../assets/svg/sunny.svg";
 import partlyCloudy from "../../assets/svg/partlyCloudy.svg";
 import cloudy from "../../assets/svg/cloudy.svg";
+import { useSpring } from "react-spring";
 
 const PlantItem = ({ title, careLevel, img, id, temperature, light }) => {
   const history = useHistory();
+  const props = useSpring({
+    to: { opacity: 1 },
+    from: { opacity: 0 },
+    delay: 500,
+  });
 
   const getLightIcon = () => {
     if (light === "Low") return <S.Icon src={cloudy} alt="" />;
@@ -16,7 +22,7 @@ const PlantItem = ({ title, careLevel, img, id, temperature, light }) => {
   };
 
   return (
-    <S.Container onClick={() => history.push(`/plants/${id}`)}>
+    <S.Container style={props} onClick={() => history.push(`/plants/${id}`)}>
       {/* <FavoriteButton plantId={id} /> */}
       <S.Image src={img} />
       <h3>{title}</h3>
