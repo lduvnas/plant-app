@@ -10,6 +10,7 @@ import water from "../../assets/svg/water.svg";
 import temperature from "../../assets/svg/temperature.svg";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
+import ReactLoading from "react-loading";
 
 const DetailPage = (props) => {
   const [plant, setPlant] = useState({});
@@ -43,7 +44,17 @@ const DetailPage = (props) => {
 
       <S.PlantDetailContainer>
         <FavoriteButton plantId={id} />
-        <S.Image src={plant.imageURL} />
+        {plant.imageURL ? (
+          <S.Image src={plant.imageURL} />
+        ) : (
+          <ReactLoading
+            type="bubbles"
+            color="#455b57"
+            height={50}
+            width={100}
+          />
+        )}
+
         <S.PlantDetails>
           <S.PlantTitle>{plant.title}</S.PlantTitle>
           {/* <S.CareLabel>
