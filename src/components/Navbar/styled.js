@@ -19,6 +19,7 @@ export const Circle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 120px;
   width: 120px;
   background-color: ${COLORS.neutral_4};
@@ -26,6 +27,8 @@ export const Circle = styled.div`
   left: 50%;
   top: 120px;
   transform: translate(-50%, -50%);
+  font-size: 12px;
+  font-weight: 700;
 `;
 
 export const ArrowUp = styled.div`
