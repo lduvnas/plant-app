@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute";
 import DetailPage from "./pages/DetailPage/DetailPage";
 import ExplorePage from "./pages/ExplorePage/ExplorePage";
 import LandingPage from "./pages/LandingPage/LandingPage";
+import EditProfilePage from "./pages/EditProfilePage/EditProfilePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Switch>
             <PrivateRoute exact path="/plants/:id" component={DetailPage} />
             <PrivateRoute exact path="/explore" component={ExplorePage} />
+            <PrivateRoute exact path="/edit" component={EditProfilePage} />
             <PrivateRoute exact path="/" component={HomePage} />
 
             <Route path="/login" exact component={LoginForm} />

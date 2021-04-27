@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./styled";
 import { useHistory } from "react-router-dom";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
+// import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import sunny from "../../assets/svg/sunny.svg";
 import partlyCloudy from "../../assets/svg/partlyCloudy.svg";
 import cloudy from "../../assets/svg/cloudy.svg";
@@ -47,7 +47,7 @@ const PlantSearchDetail = ({
             {getLightIcon()}
           </S.LightCard>
           <S.LightCard>
-            <p>{temperature}</p>
+            <p>{temperature}°</p>
           </S.LightCard>
           <S.LightCard>
             <p>{careLevel}</p>

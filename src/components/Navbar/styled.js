@@ -53,15 +53,16 @@ export const MenuTrigger = styled.div`
 
 export const Menu = styled.nav`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: #fff;
   border-radius: 8px;
   position: absolute;
-  top: 150px;
+  top: 135px;
   right: 15%;
   width: 200px;
-  height: 40px;
+  height: 60px;
   opacity: ${(props) => (props.clicked ? "1" : "0")};
   visibility: ${(props) => (props.clicked ? "visible" : "hidden")};
   transform: ${(props) =>
