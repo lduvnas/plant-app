@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
 
   // const provider = new firebase.auth.GoogleAuthProvider();
 
-  function signupWithEmail(email, password, displayName) {
+  const signupWithEmail = (email, password, displayName) => {
     return auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       //creates user collection with the users uniq id
       return db.collection("users").doc(cred.user.uid).set({
@@ -25,9 +25,9 @@ export function AuthProvider({ children }) {
         userImg: "",
       });
     });
-  }
+  };
 
-  // function signupWithGoogle() {
+  // const signupWithGoogle = () => {
   //   return auth.signInWithPopup(provider).then((cred) => {
   //     //creates user collection with the users uniq id
   //     return db.collection("users").doc(cred.user.uid).set({
@@ -36,13 +36,13 @@ export function AuthProvider({ children }) {
   //   });
   // }
 
-  function login(email, password) {
+  const login = (email, password) => {
     return auth.signInWithEmailAndPassword(email, password);
-  }
+  };
 
-  function logout() {
+  const logout = () => {
     return auth.signOut();
-  }
+  };
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -54,7 +54,7 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
-  function addToUserCollection(plantId) {
+  const addToUserCollection = (plantId) => {
     console.log("running addToUserCollection");
     return db
       .collection("users")
@@ -62,9 +62,9 @@ export function AuthProvider({ children }) {
       .update({
         favorites: firebase.firestore.FieldValue.arrayUnion(plantId),
       });
-  }
+  };
 
-  function removeFromUserCollection(plantId) {
+  const removeFromUserCollection = (plantId) => {
     console.log("running removeFromUserCollection");
     return db
       .collection("users")
@@ -72,7 +72,7 @@ export function AuthProvider({ children }) {
       .update({
         favorites: firebase.firestore.FieldValue.arrayRemove(plantId),
       });
-  }
+  };
 
   const value = {
     currentUser,

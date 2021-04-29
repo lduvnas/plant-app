@@ -1,6 +1,6 @@
 import React from "react";
 import * as S from "./styled";
-import landing from "../../images/landing.svg";
+// import landing from "../../images/landing.svg";
 import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const LandingPage = () => {
         <Button onClick={() => history.push("/signup")} title="Sign up" />
         <Link to="/login">Already have an account? Login here</Link>
       </S.WelcomeContainer>
-      <img src={landing} alt="landing" />
+      {/* <img src={landing} alt="landing" /> */}
     </S.Container>
   );
 };

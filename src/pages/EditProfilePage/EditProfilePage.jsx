@@ -14,17 +14,13 @@ const HomePage = () => {
 
   console.log("url: ", userProfileImgURL);
 
-  function handleChange(e) {
+  const handleChange = (e) => {
     setFile(e.target.files[0]);
-  }
+  };
 
   const handleUpdate = (e) => {
     e.preventDefault();
-    // let imgUrl = await uploadImage();
     uploadImage();
-    // if (imgUrl == null && userData.userImg) {
-    //   imgUrl = userData.userImg;
-    // }
     db.collection("users")
       .doc(currentUser.uid)
       .update({
@@ -88,25 +84,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-// const [userData, setUserData] = useState(null);
-
-// const getUserData = async () => {
-//   db.collection("users")
-//     .doc(currentUser.uid)
-//     .onSnapshot((doc) => {
-//       console.log("fetching userData");
-//       if (doc.exists) {
-//         setUserProfileImgURL(doc.data().userImg);
-//         console.log(doc.data().userImg);
-//       }
-//     });
-// };
-
-// const handleUpdate = () => {
-
-// }
-
-// useEffect(() => {
-//   getUserData();
-// }, []);

@@ -1,21 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { db } from "../../firebase";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
 import Navbar from "../../components/Navbar";
 import calender from "../../assets/svg/calender.svg";
 import sun from "../../assets/svg/sun.svg";
 import water from "../../assets/svg/water.svg";
 import temperature from "../../assets/svg/temperature.svg";
-import { PlantContext } from "../../contexts/PlantContextProvider";
 import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
 import ReactLoading from "react-loading";
 import { useSpring } from "react-spring";
 
 const DetailPage = (props) => {
   const [plant, setPlant] = useState({});
-  const { addToUserCollection, removeFromUserCollection } = useAuth();
   const id = props.match.params.id;
 
   const animationProps = useSpring({
@@ -24,13 +21,13 @@ const DetailPage = (props) => {
     delay: 800,
   });
 
-  function fetchPlant() {
+  const fetchPlant = () => {
     db.collection("plants")
       .doc(id)
       .get()
       .then((doc) => {
         if (doc.exists) {
-          console.log("Document data:", doc.data());
+          console.log("running fetchPlant");
           setPlant(doc.data());
         } else {
           console.log("No such document!");
@@ -39,7 +36,8 @@ const DetailPage = (props) => {
       .catch((error) => {
         console.log("Error getting document:", error);
       });
-  }
+  };
+
   useEffect(() => {
     fetchPlant();
     // eslint-disable-next-line react-hooks/exhaustive-deps

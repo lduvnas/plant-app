@@ -9,7 +9,7 @@ import { PlantContext } from "../../contexts/PlantContextProvider";
 
 const Navbar = () => {
   const history = useHistory();
-  const { currentUser, logout, userProfileImgURL } = useAuth();
+  const { currentUser, logout } = useAuth();
   const [error, setError] = useState();
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
@@ -17,7 +17,7 @@ const Navbar = () => {
 
   const onClick = () => setIsActive(!isActive);
 
-  async function handleLogout() {
+  const handleLogout = async () => {
     setError("");
     try {
       await logout();
@@ -26,7 +26,7 @@ const Navbar = () => {
       setError("Failed to logout");
       console.log(error);
     }
-  }
+  };
 
   return (
     <S.Container>

@@ -15,7 +15,7 @@ const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
@@ -35,7 +35,7 @@ const SignupForm = () => {
       setError("Failed to create an account");
     }
     setLoading(false);
-  }
+  };
 
   return (
     <S.Container>

@@ -8,12 +8,12 @@ import Input from "../Input";
 const LoginForm = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { login, signupWithGoogle, currentUser } = useAuth();
+  const { login, signupWithGoogle } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  async function handleSubmit(e) {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -25,9 +25,9 @@ const LoginForm = () => {
       setError("Failed to sign in");
     }
     setLoading(false);
-  }
+  };
 
-  async function handleOnSubmit(e) {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -39,9 +39,8 @@ const LoginForm = () => {
       setError("Failed to sign in");
     }
     setLoading(false);
-  }
+  };
 
-  console.log(currentUser);
   return (
     <S.Container>
       <h1>Login</h1>

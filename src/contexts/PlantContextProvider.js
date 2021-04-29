@@ -11,16 +11,16 @@ export default function PlantContextProvider({ children }) {
 
   const { currentUser } = useAuth();
 
-  function fetchPlants() {
+  const fetchPlants = () => {
     return db.collection("plants").onSnapshot((snapshot) => {
       const plantData = [];
       snapshot.forEach((doc) => plantData.push({ ...doc.data(), id: doc.id }));
       console.log("Fetching");
       setPlantListData(plantData);
     });
-  }
+  };
 
-  function fetchFavorites() {
+  const fetchFavorites = () => {
     return db
       .collection("users")
       .doc(currentUser.uid)
@@ -30,7 +30,7 @@ export default function PlantContextProvider({ children }) {
         setFavoritesListData(doc.data().favorites);
         console.log("userdata:", doc.data());
       });
-  }
+  };
 
   // const getUserData = () => {
   //   return db

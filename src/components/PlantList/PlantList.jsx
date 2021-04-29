@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import DiscoverItem from "../DiscoverItem/DiscoverItem";
 import discover from "../../assets/svg/discover.svg";
 

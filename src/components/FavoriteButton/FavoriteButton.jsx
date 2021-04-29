@@ -20,16 +20,13 @@ const FavoriteButton = ({ plantId }) => {
     }
   }, [isInFavorites]);
 
-  function toggleFavorite() {
+  const toggleFavorite = () => {
     if (isInFavorites) {
       removeFromUserCollection(plantId);
     } else {
       addToUserCollection(plantId);
     }
-  }
-
-  console.log("favorite: ", favorite);
-  console.log("isInFavorites: ", isInFavorites);
+  };
 
   return (
     <S.HeartButton onClick={toggleFavorite}>
