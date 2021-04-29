@@ -1,41 +1,68 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import * as S from "./styled";
 import Navbar from "../../components/Navbar";
 import { useAuth } from "../../contexts/AuthContext";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
+import { db, storage } from "../../firebase";
+import avatar from "../../assets/svg/avatar.svg";
+import { PlantContext } from "../../contexts/PlantContextProvider";
 
 const HomePage = () => {
-  const { currentUser, logout } = useAuth();
-  // const [user, setUser] = useState("");
-  // const [selectedFile, setSelectedFile] = useState(null);
-  // const allInputs = { imgUrl: "" };
-  // const [imageAsFile, setImageAsFile] = useState("");
-  // const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+  const { currentUser, userProfileImgURL, setUserProfileImgURL } = useAuth();
+  const { userData } = useContext(PlantContext);
 
-  const [displayName, setDisplayName] = useState(null);
-  const [photoURL, setPhotoURL] = useState(null);
+  const [file, setFile] = useState(null);
 
-  // const handleImageAsFile = (e) => {
-  //   const image = e.target.files[0];
-  //   setImageAsFile((imageFile) => image);
-  // };
+  console.log("url: ", userProfileImgURL);
 
-  function addUserDisplayName() {
-    currentUser
-      .updateProfile({
-        displayName: displayName,
-        photoURL: photoURL,
-      })
-      .then(function () {
-        console.log("succsess");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+  function handleChange(e) {
+    setFile(e.target.files[0]);
   }
-  console.log("DISPLAY NAME STATE:", displayName);
-  console.log("PHOTO URL STATE", photoURL);
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    // let imgUrl = await uploadImage();
+    uploadImage();
+    // if (imgUrl == null && userData.userImg) {
+    //   imgUrl = userData.userImg;
+    // }
+    db.collection("users")
+      .doc(currentUser.uid)
+      .update({
+        userImg: userProfileImgURL,
+      })
+      .then(() => {
+        console.log("User Updated!");
+      });
+  };
+
+  const uploadImage = () => {
+    const uploadTask = storage
+      .ref(`/users/${currentUser.uid}/profile.jpg`)
+      .put(file);
+    uploadTask.on("state_changed", console.log, console.error, () => {
+      storage
+        .ref("users")
+        .child(currentUser.uid)
+        .child("profile.jpg")
+        .getDownloadURL()
+        .then((url) => {
+          console.log("image successfully uploaded");
+          setFile(null);
+          setUserProfileImgURL(url);
+        });
+    });
+  };
+
+  const handleDelete = () => {
+    db.collection("users")
+      .doc(currentUser.uid)
+      .update({
+        userImg: null,
+      })
+      .then(() => {
+        console.log("User image deleted");
+      });
+  };
 
   return (
     <S.Container>
@@ -45,37 +72,41 @@ const HomePage = () => {
         {currentUser.email}
         {currentUser.displayName}
         {currentUser.photoURL}
-        <S.Form>
-          {/* <input
-            type="text"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          /> */}
-
-          {/* <input
-            type="file"
-            // value={selectedFile}
-            // onChange={(e) => setSelectedFile(e.target.files[0])}
-            onChange={handleImageAsFile}
-          /> */}
-
-          <Input
-            type="text"
-            placeholder="Display name"
-            onChange={(e) => setDisplayName(e.target.value)}
-            required
-          />
-          <Input
-            type="file"
-            placeholder="choose file"
-            onChange={(e) => setPhotoURL(e.target.value)}
-            // required
-          />
+        <S.Form onSubmit={handleUpdate}>
+          <input type="file" onChange={handleChange} />
+          <button disabled={!file}>upload to firebase</button>
         </S.Form>
+        {userData.userImg ? (
+          <S.Image src={userData.userImg} alt="" />
+        ) : (
+          <S.Image src={avatar} alt="avatar" />
+        )}
+        <button onClick={handleDelete}>Remove image</button>
       </div>
-      <Button title="Add user display name" onClick={addUserDisplayName} />
     </S.Container>
   );
 };
 
 export default HomePage;
+
+// const [userData, setUserData] = useState(null);
+
+// const getUserData = async () => {
+//   db.collection("users")
+//     .doc(currentUser.uid)
+//     .onSnapshot((doc) => {
+//       console.log("fetching userData");
+//       if (doc.exists) {
+//         setUserProfileImgURL(doc.data().userImg);
+//         console.log(doc.data().userImg);
+//       }
+//     });
+// };
+
+// const handleUpdate = () => {
+
+// }
+
+// useEffect(() => {
+//   getUserData();
+// }, []);

@@ -11,14 +11,18 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const [userProfileImgURL, setUserProfileImgURL] = useState("");
 
   // const provider = new firebase.auth.GoogleAuthProvider();
 
-  function signupWithEmail(email, password) {
+  function signupWithEmail(email, password, displayName) {
     return auth.createUserWithEmailAndPassword(email, password).then((cred) => {
       //creates user collection with the users uniq id
       return db.collection("users").doc(cred.user.uid).set({
         favorites: [],
+        displayName: displayName,
+        email: email,
+        userImg: "",
       });
     });
   }
@@ -44,12 +48,14 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
+      console.log("running onAuthStateChanged");
     });
 
     return unsubscribe;
   }, []);
 
   function addToUserCollection(plantId) {
+    console.log("running addToUserCollection");
     return db
       .collection("users")
       .doc(currentUser.uid)
@@ -59,6 +65,7 @@ export function AuthProvider({ children }) {
   }
 
   function removeFromUserCollection(plantId) {
+    console.log("running removeFromUserCollection");
     return db
       .collection("users")
       .doc(currentUser.uid)
@@ -75,6 +82,8 @@ export function AuthProvider({ children }) {
     logout,
     addToUserCollection,
     removeFromUserCollection,
+    userProfileImgURL,
+    setUserProfileImgURL,
   };
 
   return (

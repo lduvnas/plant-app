@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import * as S from "./styled";
 import { PlantContext } from "../../contexts/PlantContextProvider";
-import PlantItem from "../../components/PlantItem/PlantItem";
+// import PlantItem from "../../components/PlantItem/PlantItem";
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
@@ -48,6 +48,7 @@ const ExplorePage = () => {
               ) {
                 return plant;
               }
+              return null;
             })
             .map((plant) => {
               return (

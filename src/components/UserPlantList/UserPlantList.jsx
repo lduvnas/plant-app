@@ -21,6 +21,7 @@ const UserPlantList = () => {
             if (favoritesListData.includes(plant.id)) {
               return plant;
             }
+            return null;
           })
           .map((plant) => {
             return (

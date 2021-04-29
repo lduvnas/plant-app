@@ -7,6 +7,8 @@ export const PlantContext = createContext({});
 export default function PlantContextProvider({ children }) {
   const [plantListData, setPlantListData] = useState([]);
   const [favoritesListData, setFavoritesListData] = useState([]);
+  const [userData, setUserData] = useState({});
+
   const { currentUser } = useAuth();
 
   function fetchPlants() {
@@ -24,16 +26,30 @@ export default function PlantContextProvider({ children }) {
       .doc(currentUser.uid)
       .onSnapshot((doc) => {
         console.log("fetching favorites");
+        setUserData(doc.data());
         setFavoritesListData(doc.data().favorites);
+        console.log("userdata:", doc.data());
       });
   }
 
+  // const getUserData = () => {
+  //   return db
+  //     .collection("users")
+  //     .doc(currentUser.uid)
+  //     .onSnapshot((doc) => {
+  //       console.log("fetching userData");
+  //       if (doc.exists) {
+  //         setUserData(doc.data());
+  //         console.log(userData);
+  //       }
+  //     });
+  // };
+
   useEffect(() => {
-    if (currentUser) {
-      fetchFavorites();
-      fetchPlants();
-    }
-  }, [currentUser]);
+    fetchFavorites();
+    fetchPlants();
+    // getUserData();
+  }, []);
 
   return (
     <PlantContext.Provider
@@ -41,6 +57,7 @@ export default function PlantContextProvider({ children }) {
         plantListData,
         setPlantListData,
         favoritesListData,
+        userData,
       }}
     >
       {children}

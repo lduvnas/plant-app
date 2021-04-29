@@ -69,3 +69,11 @@ export const Menu = styled.nav`
     props.clicked ? "translateY(0px)" : "translateY(-20px)"};
   transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
 `;
+
+export const Image = styled.img`
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-left: 0.5em;
+`;

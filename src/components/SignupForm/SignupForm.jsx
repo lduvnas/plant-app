@@ -6,6 +6,7 @@ import Input from "../Input";
 import Button from "../Button";
 
 const SignupForm = () => {
+  const nameRef = useRef();
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -24,7 +25,11 @@ const SignupForm = () => {
     try {
       setError("");
       setLoading(true);
-      await signupWithEmail(emailRef.current.value, passwordRef.current.value);
+      await signupWithEmail(
+        emailRef.current.value,
+        passwordRef.current.value,
+        nameRef.current.value
+      );
       history.push("/login");
     } catch {
       setError("Failed to create an account");
@@ -37,6 +42,7 @@ const SignupForm = () => {
       <h1>Sign Up</h1>
       {error && <p>{error}</p>}
       <S.Form onSubmit={handleSubmit}>
+        <Input type="text" placeholder="display name" refs={nameRef} required />
         <Input type="email" placeholder="email" refs={emailRef} required />
         <Input
           type="password"
