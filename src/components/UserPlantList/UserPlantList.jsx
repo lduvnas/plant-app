@@ -34,6 +34,9 @@ const UserPlantList = () => {
                 temperature={plant.temperature}
                 careLevel={plant.careLevel}
                 light={plant.light}
+                nextWateringDate={plant.nextWateringDate}
+                wateringInterval={plant.wateringInterval}
+                isInFavorites={plant.isInFavorites}
               />
             );
           })}

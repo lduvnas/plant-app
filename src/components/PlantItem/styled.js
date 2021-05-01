@@ -36,3 +36,15 @@ export const LightCard = styled.div`
 export const Icon = styled.img`
   height: 20px;
 `;
+
+export const WaterIcon = styled(animated.img)`
+  position: absolute;
+  margin: 10px;
+  z-index: 2;
+`;
+
+export const NeedsWaterTitle = styled.h4`
+  position: absolute;
+  margin: 10px;
+  margin-left: 40px;
+`;

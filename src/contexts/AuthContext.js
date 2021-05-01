@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { auth, db } from "../firebase";
 import firebase from "firebase/app";
+import moment from "moment";
 
 const AuthContext = React.createContext();
 
@@ -61,7 +62,16 @@ export function AuthProvider({ children }) {
       .doc(currentUser.uid)
       .update({
         favorites: firebase.firestore.FieldValue.arrayUnion(plantId),
-      });
+      })
+      .then(
+        db
+          .collection("plants")
+          .doc(plantId)
+          .update({
+            isInFavorites: true,
+            nextWateringDate: moment(Date()).format("MMMM DD, YYYY"),
+          })
+      );
   };
 
   const removeFromUserCollection = (plantId) => {
@@ -71,7 +81,12 @@ export function AuthProvider({ children }) {
       .doc(currentUser.uid)
       .update({
         favorites: firebase.firestore.FieldValue.arrayRemove(plantId),
-      });
+      })
+      .then(
+        db.collection("plants").doc(plantId).update({
+          isInFavorites: false,
+        })
+      );
   };
 
   const value = {
