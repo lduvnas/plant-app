@@ -40,10 +40,27 @@ export const PlantListContainer = styled.div`
 export const FilterCard = styled.div`
   background-color: #dbedea;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 5px 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 60px;
   font-size: 10px;
+  margin-left: 1em;
+  position: relative;
+`;
+
+export const SearchTermContainer = styled.div`
+  display: flex;
+  /* justify-content: center;
+  margin-top: 0.5em;
+  margin-bottom: 3em; */
+`;
+
+export const ClearIcon = styled.img`
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  height: 15px;
+  height: 15px;
 `;
