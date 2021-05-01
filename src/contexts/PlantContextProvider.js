@@ -21,15 +21,17 @@ export default function PlantContextProvider({ children }) {
   };
 
   const fetchFavorites = () => {
-    return db
-      .collection("users")
-      .doc(currentUser.uid)
-      .onSnapshot((doc) => {
-        console.log("fetching favorites");
-        setUserData(doc.data());
-        setFavoritesListData(doc.data().favorites);
-        console.log("userdata:", doc.data());
-      });
+    if (currentUser !== null) {
+      return db
+        .collection("users")
+        .doc(currentUser.uid)
+        .onSnapshot((doc) => {
+          console.log("fetching favorites");
+          setUserData(doc.data());
+          setFavoritesListData(doc.data().favorites);
+          console.log("userdata:", doc.data());
+        });
+    }
   };
 
   // const getUserData = () => {
@@ -49,7 +51,7 @@ export default function PlantContextProvider({ children }) {
     fetchFavorites();
     fetchPlants();
     // getUserData();
-  }, []);
+  }, [currentUser]);
 
   return (
     <PlantContext.Provider
