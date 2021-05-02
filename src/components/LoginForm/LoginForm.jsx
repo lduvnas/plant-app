@@ -27,19 +27,19 @@ const LoginForm = () => {
     setLoading(false);
   };
 
-  const handleOnSubmit = async (e) => {
-    e.preventDefault();
+  // const handleOnSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      setError("");
-      setLoading(true);
-      await signupWithGoogle();
-      history.push("/");
-    } catch {
-      setError("Failed to sign in");
-    }
-    setLoading(false);
-  };
+  //   try {
+  //     setError("");
+  //     setLoading(true);
+  //     await signupWithGoogle();
+  //     history.push("/");
+  //   } catch {
+  //     setError("Failed to sign in");
+  //   }
+  //   setLoading(false);
+  // };
 
   return (
     <S.Container>
@@ -61,10 +61,10 @@ const LoginForm = () => {
         <Button disabled={loading} type="submit" title="Login" />
         Need an account? <Link to="/signup">Sign Up</Link>
       </S.Form>
-      <S.Form>
+      {/* <S.Form>
         <h3>Google login</h3>
         <Button disabled={loading} onClick={handleOnSubmit} title="Sign Up" />
-      </S.Form>
+      </S.Form> */}
     </S.Container>
   );
 };

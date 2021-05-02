@@ -55,7 +55,7 @@ const CommentsSection = ({ plant, id }) => {
               plant={plant}
               userId={comment.userId}
               userAvatar={comment.userAvatar}
-              displayName={comment.displayName}
+              displayName={comment.userDisplayName}
               message={comment.commentMessage}
               timestamp={comment.timestamp}
             />
