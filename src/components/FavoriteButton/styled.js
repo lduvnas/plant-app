@@ -8,4 +8,7 @@ export const HeartButton = styled.button`
   margin: 20px;
 `;
 
-export const HeartIcon = styled.img``;
+export const HeartIcon = styled.img`
+  height: 60px;
+  width: 60px;
+`;
