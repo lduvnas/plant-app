@@ -56,6 +56,7 @@ export const PlantDetailContainer = styled(animated.div)`
   flex-direction: row;
   justify-content: space-between;
   margin-top: 5em;
+  margin-bottom: 3em;
 `;
 
 export const PlantDetails = styled.div`
@@ -93,3 +94,44 @@ export const CareTitle = styled.h3`
   margin-top: 2em;
   margin-bottom: 1em;
 `;
+
+export const CommentsSection = styled.div`
+  /* display: flex;
+  justify-content: flex-start;
+  align-items: start; */
+  width: 700px;
+  flex-direction: column;
+  margin-bottom: 3em;
+`;
+
+export const CommentForm = styled.form`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Comment = styled.div`
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2em;
+`;
+
+export const UserImage = styled.img`
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+`;
+
+export const CommentMessage = styled.div``;
