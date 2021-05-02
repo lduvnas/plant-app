@@ -5,12 +5,17 @@ import { useAuth } from "../../contexts/AuthContext";
 import { db, storage } from "../../firebase";
 import avatar from "../../assets/svg/avatar.svg";
 import { PlantContext } from "../../contexts/PlantContextProvider";
+import close from "../../assets/svg/close.svg";
+import Button from "../../components/Button/Button";
 
 const HomePage = () => {
   const { currentUser, userProfileImgURL, setUserProfileImgURL } = useAuth();
   const { userData } = useContext(PlantContext);
 
   const [file, setFile] = useState(null);
+  const metadata = {
+    contentType: "image/jpeg",
+  };
 
   console.log("url: ", userProfileImgURL);
 
@@ -34,7 +39,7 @@ const HomePage = () => {
   const uploadImage = () => {
     const uploadTask = storage
       .ref(`/users/${currentUser.uid}/profile.jpg`)
-      .put(file);
+      .put(file, metadata);
     uploadTask.on("state_changed", console.log, console.error, () => {
       storage
         .ref("users")
@@ -63,22 +68,33 @@ const HomePage = () => {
   return (
     <S.Container>
       <Navbar />
-      <div>
+      <S.EditProfileContainer>
         <h2>Edit Profile</h2>
-        {currentUser.email}
-        {currentUser.displayName}
-        {currentUser.photoURL}
-        <S.Form onSubmit={handleUpdate}>
-          <input type="file" onChange={handleChange} />
-          <button disabled={!file}>upload to firebase</button>
-        </S.Form>
-        {userData.userImg ? (
-          <S.Image src={userData.userImg} alt="" />
-        ) : (
-          <S.Image src={avatar} alt="avatar" />
-        )}
-        <button onClick={handleDelete}>Remove image</button>
-      </div>
+        <h3>{userData.displayName}</h3>
+        <p>{currentUser.email}</p>
+
+        <S.ContentWrapper>
+          <S.ImageContainer>
+            {userData.userImg ? (
+              <S.Image src={userData.userImg} alt="" />
+            ) : (
+              <S.Image src={avatar} alt="avatar" />
+            )}
+            <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" />
+            {/* <Button title="Remove image" onClick={handleDelete} /> */}
+          </S.ImageContainer>
+          {/* <S.ContentContainer> */}
+          <S.Form onSubmit={handleUpdate}>
+            {/* <S.Input value={userData.displayName} />
+            <S.Input value={currentUser.email} />
+            <S.Input value="●●●●●●●●" />
+            <S.Input value="●●●●●●●●" /> */}
+            <input type="file" onChange={handleChange} />
+            <Button disabled={!file} title="upload to firebase" />
+          </S.Form>
+          {/* </S.ContentContainer> */}
+        </S.ContentWrapper>
+      </S.EditProfileContainer>
     </S.Container>
   );
 };

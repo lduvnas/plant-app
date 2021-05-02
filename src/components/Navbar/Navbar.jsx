@@ -38,7 +38,7 @@ const Navbar = () => {
 
       <div>
         <S.MenuTrigger onClick={onClick}>
-          <span>{currentUser.email}</span>
+          <span>{userData.displayName}</span>
           {userData.userImg ? (
             <S.Image src={userData.userImg} alt="" />
           ) : (
