@@ -35,6 +35,7 @@ export const PlantListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   /* justify-content: space-between; */
   /* width: 800px; */
+  margin-bottom: 5em;
 `;
 
 export const FilterCard = styled.div`
@@ -48,6 +49,7 @@ export const FilterCard = styled.div`
   font-size: 10px;
   margin-left: 1em;
   position: relative;
+  cursor: pointer;
 `;
 
 export const SearchTermContainer = styled.div`
@@ -59,6 +61,7 @@ export const SearchTermContainer = styled.div`
 
 export const ClearIcon = styled.img`
   position: absolute;
+  cursor: pointer;
   top: -6px;
   right: -6px;
   height: 15px;

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import * as S from "./styled";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 // import PlantItem from "../../components/PlantItem/PlantItem";
@@ -11,28 +11,62 @@ import close from "../../assets/svg/close.svg";
 const ExplorePage = () => {
   const { plantListData } = useContext(PlantContext);
   const [searchTerm, setSearchTerm] = useState("");
+  // const previousSearchTerms = [];
+  const [storedSearchTerms, setStoredSearchTerms] = useState(
+    JSON.parse(localStorage.getItem("searchTerms"))
+  );
 
-  // const filterCareLevels = (plant, selectedLevel) => {
-  //   // if (plant.careLevel === selectedLevel) {
-  //   return plant.careLevel === selectedLevel;
-  //   // }
-  // };
+  const filtredPlants = plantListData.filter((plant) => {
+    if (searchTerm === "") {
+      return plant;
+    } else if (
+      plant.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      plant.careLevel.toLowerCase().includes(searchTerm.toLowerCase())
+    ) {
+      return plant;
+    }
+    return null;
+  });
 
-  // const a = "Easy";
-  // const filtered = plantListData.filter(filterCareLevels(a));
+  // useEffect(() => {
+  //   const delayDebounceFn = setTimeout(() => {
+  //     setStoredSearchTerms(
+  //       JSON.parse(localStorage.getItem("searchTerms")) || []
+  //     );
+  //     console.log(storedSearchTerms);
 
-  // console.log(filtered);
+  //     if (searchTerm === "" || storedSearchTerms.includes(searchTerm)) {
+  //       return null;
+  //     } else {
+  //       storedSearchTerms.push(searchTerm);
+  //     }
 
-  const searchTerms = ["cactus", "ficus"];
-  localStorage.setItem("searchTerms", JSON.stringify(searchTerms));
+  //     localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
+  //   }, 3000);
 
-  //...
+  //   return () => clearTimeout(delayDebounceFn);
+  // }, [searchTerm]);
 
-  searchTerms.push(searchTerm);
+  const deleteSearchTerm = (e, term) => {
+    e.stopPropagation();
+    let newArr = storedSearchTerms.filter((item) => item !== term);
+    setStoredSearchTerms(newArr);
+    console.log("inside delete", storedSearchTerms);
+    localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
+  };
 
-  const storedSearchTerms = JSON.parse(localStorage.getItem("searchTerms"));
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    setStoredSearchTerms(JSON.parse(localStorage.getItem("searchTerms")));
 
-  console.log(storedSearchTerms);
+    if (searchTerm === "" || storedSearchTerms.includes(searchTerm)) {
+      return null;
+    } else {
+      storedSearchTerms.push(searchTerm);
+    }
+
+    localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
+  };
 
   return (
     <S.Container>
@@ -46,10 +80,11 @@ const ExplorePage = () => {
           molestiae te.
         </S.SubTitle>
         <Link to="/">Go back</Link>
-        <form>
+        <form onSubmit={(e) => handleOnSubmit(e)}>
           <Input
             type="text"
             placeholder="search"
+            value={searchTerm}
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
@@ -70,45 +105,37 @@ const ExplorePage = () => {
         </S.SearchTermContainer>
         <h4>Recent history</h4>
         <S.SearchTermContainer>
-          {storedSearchTerms &&
-            storedSearchTerms.map((searchTerm) => {
-              return (
-                <S.FilterCard onClick={() => setSearchTerm(searchTerm)}>
-                  <S.ClearIcon src={close} />
-                  {searchTerm}
-                </S.FilterCard>
-              );
-            })}
+          {storedSearchTerms
+            ? storedSearchTerms.map((term) => {
+                return (
+                  <S.FilterCard onClick={() => setSearchTerm(term)}>
+                    <S.ClearIcon
+                      src={close}
+                      onClick={(e) => deleteSearchTerm(e, term)}
+                    />
+                    {term}
+                  </S.FilterCard>
+                );
+              })
+            : null}
         </S.SearchTermContainer>
       </S.Wrapper>
       <S.PlantListContainer>
         {plantListData &&
-          plantListData
-            .filter((plant) => {
-              if (searchTerm === "") {
-                return plant;
-              } else if (
-                plant.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                plant.careLevel.toLowerCase().includes(searchTerm.toLowerCase())
-              ) {
-                return plant;
-              }
-              return null;
-            })
-            .map((plant) => {
-              return (
-                <PlantSearchDetail
-                  key={plant.id}
-                  id={plant.id}
-                  title={plant.title}
-                  description={plant.description}
-                  img={plant.imageURL}
-                  temperature={plant.temperature}
-                  light={plant.light}
-                  careLevel={plant.careLevel}
-                />
-              );
-            })}
+          filtredPlants.map((plant) => {
+            return (
+              <PlantSearchDetail
+                key={plant.id}
+                id={plant.id}
+                title={plant.title}
+                description={plant.description}
+                img={plant.imageURL}
+                temperature={plant.temperature}
+                light={plant.light}
+                careLevel={plant.careLevel}
+              />
+            );
+          })}
       </S.PlantListContainer>
     </S.Container>
   );
