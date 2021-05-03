@@ -11,7 +11,8 @@ import Button from "../../components/Button/Button";
 const HomePage = () => {
   const { currentUser } = useAuth();
   const { userData } = useContext(PlantContext);
-  const [fileUrl, setFileUrl] = useState("");
+  const [fileUrl, setFileUrl] = useState(userData.userImg);
+  const [displayName, setDisplayName] = useState("");
 
   const metadata = {
     contentType: "image/jpeg",
@@ -30,6 +31,7 @@ const HomePage = () => {
 
     await db.collection("users").doc(currentUser.uid).update({
       userImg: fileUrl,
+      displayName: displayName,
     });
   };
 
@@ -46,6 +48,7 @@ const HomePage = () => {
       });
   };
 
+  console.log(displayName);
   return (
     <S.Container>
       <Navbar />
@@ -65,8 +68,13 @@ const HomePage = () => {
           </S.ImageContainer>
           {/* <S.ContentContainer> */}
           <S.Form onSubmit={onSubmit}>
-            {/* <S.Input value={userData.displayName} />
-            <S.Input value={currentUser.email} />
+            <S.Input
+              defaultValue={userData.displayName}
+              onChange={(event) => {
+                setDisplayName(event.target.value);
+              }}
+            />
+            {/* <S.Input value={currentUser.email} />
             <S.Input value="●●●●●●●●" />
             <S.Input value="●●●●●●●●" /> */}
             <input type="file" onChange={onFileChange} />
