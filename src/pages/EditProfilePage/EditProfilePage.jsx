@@ -9,50 +9,31 @@ import close from "../../assets/svg/close.svg";
 import Button from "../../components/Button/Button";
 
 const HomePage = () => {
-  const { currentUser, userProfileImgURL, setUserProfileImgURL } = useAuth();
+  const { currentUser } = useAuth();
   const { userData } = useContext(PlantContext);
+  const [fileUrl, setFileUrl] = useState("");
 
-  const [file, setFile] = useState(null);
   const metadata = {
     contentType: "image/jpeg",
   };
 
-  console.log("url: ", userProfileImgURL);
-
-  const handleChange = (e) => {
-    setFile(e.target.files[0]);
+  const onFileChange = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = storage.ref(`/users/${currentUser.uid}/`);
+    const fileRef = storageRef.child("profile.jpg");
+    await fileRef.put(file, metadata);
+    setFileUrl(await fileRef.getDownloadURL());
   };
 
-  const handleUpdate = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    uploadImage();
-    db.collection("users")
-      .doc(currentUser.uid)
-      .update({
-        userImg: userProfileImgURL,
-      })
-      .then(() => {
-        console.log("User Updated!");
-      });
-  };
 
-  const uploadImage = () => {
-    const uploadTask = storage
-      .ref(`/users/${currentUser.uid}/profile.jpg`)
-      .put(file, metadata);
-    uploadTask.on("state_changed", console.log, console.error, () => {
-      storage
-        .ref("users")
-        .child(currentUser.uid)
-        .child("profile.jpg")
-        .getDownloadURL()
-        .then((url) => {
-          console.log("image successfully uploaded");
-          setFile(null);
-          setUserProfileImgURL(url);
-        });
+    await db.collection("users").doc(currentUser.uid).update({
+      userImg: fileUrl,
     });
   };
+
+  console.log(fileUrl);
 
   const handleDelete = () => {
     db.collection("users")
@@ -81,16 +62,15 @@ const HomePage = () => {
               <S.Image src={avatar} alt="avatar" />
             )}
             <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" />
-            {/* <Button title="Remove image" onClick={handleDelete} /> */}
           </S.ImageContainer>
           {/* <S.ContentContainer> */}
-          <S.Form onSubmit={handleUpdate}>
+          <S.Form onSubmit={onSubmit}>
             {/* <S.Input value={userData.displayName} />
             <S.Input value={currentUser.email} />
             <S.Input value="●●●●●●●●" />
             <S.Input value="●●●●●●●●" /> */}
-            <input type="file" onChange={handleChange} />
-            <Button disabled={!file} title="upload to firebase" />
+            <input type="file" onChange={onFileChange} />
+            <Button disabled={fileUrl === ""} title="upload to firebase" />
           </S.Form>
           {/* </S.ContentContainer> */}
         </S.ContentWrapper>

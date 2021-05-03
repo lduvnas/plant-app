@@ -12,7 +12,6 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
-  const [userProfileImgURL, setUserProfileImgURL] = useState("");
 
   // const provider = new firebase.auth.GoogleAuthProvider();
 
@@ -97,8 +96,6 @@ export function AuthProvider({ children }) {
     logout,
     addToUserCollection,
     removeFromUserCollection,
-    userProfileImgURL,
-    setUserProfileImgURL,
   };
 
   return (
