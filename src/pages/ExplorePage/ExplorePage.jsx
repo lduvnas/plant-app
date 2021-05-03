@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import * as S from "./styled";
 import { PlantContext } from "../../contexts/PlantContextProvider";
-// import PlantItem from "../../components/PlantItem/PlantItem";
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
@@ -11,7 +10,6 @@ import close from "../../assets/svg/close.svg";
 const ExplorePage = () => {
   const { plantListData } = useContext(PlantContext);
   const [searchTerm, setSearchTerm] = useState("");
-  // const previousSearchTerms = [];
   const [storedSearchTerms, setStoredSearchTerms] = useState(
     JSON.parse(localStorage.getItem("searchTerms"))
   );
@@ -28,45 +26,27 @@ const ExplorePage = () => {
     return null;
   });
 
-  // useEffect(() => {
-  //   const delayDebounceFn = setTimeout(() => {
-  //     setStoredSearchTerms(
-  //       JSON.parse(localStorage.getItem("searchTerms")) || []
-  //     );
-  //     console.log(storedSearchTerms);
-
-  //     if (searchTerm === "" || storedSearchTerms.includes(searchTerm)) {
-  //       return null;
-  //     } else {
-  //       storedSearchTerms.push(searchTerm);
-  //     }
-
-  //     localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
-  //   }, 3000);
-
-  //   return () => clearTimeout(delayDebounceFn);
-  // }, [searchTerm]);
-
   const deleteSearchTerm = (e, term) => {
     e.stopPropagation();
     let newArr = storedSearchTerms.filter((item) => item !== term);
     setStoredSearchTerms(newArr);
-    console.log("inside delete", storedSearchTerms);
-    localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
+    localStorage.setItem("searchTerms", JSON.stringify(newArr));
   };
 
-  const handleOnSubmit = (e) => {
-    e.preventDefault();
-    setStoredSearchTerms(JSON.parse(localStorage.getItem("searchTerms")));
-
+  const storeInLocalStorage = () => {
     if (searchTerm === "" || storedSearchTerms.includes(searchTerm)) {
       return null;
     } else {
+      if (storedSearchTerms.length >= 10) {
+        storedSearchTerms.shift();
+      }
       storedSearchTerms.push(searchTerm);
     }
 
     localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
   };
+
+  console.log(filtredPlants);
 
   return (
     <S.Container>
@@ -80,7 +60,7 @@ const ExplorePage = () => {
           molestiae te.
         </S.SubTitle>
         <Link to="/">Go back</Link>
-        <form onSubmit={(e) => handleOnSubmit(e)}>
+        <form>
           <Input
             type="text"
             placeholder="search"
@@ -90,8 +70,7 @@ const ExplorePage = () => {
             }}
           />
         </form>
-
-        <h4>Categories</h4>
+        <S.SearchFilterTitle>Categories</S.SearchFilterTitle>
         <S.SearchTermContainer>
           <S.FilterCard onClick={() => setSearchTerm("Easy")}>
             Easy
@@ -103,7 +82,7 @@ const ExplorePage = () => {
             Medium
           </S.FilterCard>
         </S.SearchTermContainer>
-        <h4>Recent history</h4>
+        <S.SearchFilterTitle>Recent history</S.SearchFilterTitle>
         <S.SearchTermContainer>
           {storedSearchTerms
             ? storedSearchTerms.map((term) => {
@@ -120,8 +99,9 @@ const ExplorePage = () => {
             : null}
         </S.SearchTermContainer>
       </S.Wrapper>
+      {searchTerm !== "" && <p>Search results for "{searchTerm}"</p>}
       <S.PlantListContainer>
-        {plantListData &&
+        {filtredPlants.length !== 0 ? (
           filtredPlants.map((plant) => {
             return (
               <PlantSearchDetail
@@ -133,9 +113,14 @@ const ExplorePage = () => {
                 temperature={plant.temperature}
                 light={plant.light}
                 careLevel={plant.careLevel}
+                storeInLocalStorage={storeInLocalStorage}
+                searchTerm={searchTerm}
               />
             );
-          })}
+          })
+        ) : (
+          <p>no results</p>
+        )}
       </S.PlantListContainer>
     </S.Container>
   );

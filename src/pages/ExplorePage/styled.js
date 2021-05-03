@@ -41,20 +41,26 @@ export const PlantListContainer = styled.div`
 export const FilterCard = styled.div`
   background-color: #dbedea;
   border-radius: 10px;
-  padding: 5px 30px;
+  padding: 5px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 60px;
+  /* max-width: 60px; */
   font-size: 10px;
   margin-left: 1em;
   position: relative;
   cursor: pointer;
 `;
 
+export const SearchFilterTitle = styled.h4`
+  text-align: center;
+  margin: 0.5em;
+`;
+
 export const SearchTermContainer = styled.div`
   display: flex;
-  /* justify-content: center;
+  justify-content: center;
+  /*
   margin-top: 0.5em;
   margin-bottom: 3em; */
 `;
