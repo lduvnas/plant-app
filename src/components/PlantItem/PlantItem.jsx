@@ -27,11 +27,8 @@ const PlantItem = ({
 
   const styles = useSpring({
     loop: true,
-    to: [
-      { opacity: 1, height: 24, width: 24 },
-      { opacity: 0.3, height: 22, width: 22 },
-    ],
-    from: { opacity: 0.3, height: 22, width: 22 },
+    to: [{ opacity: 1 }, { opacity: 0 }],
+    from: { opacity: 0 },
   });
 
   const getLightIcon = () => {
@@ -73,15 +70,19 @@ const PlantItem = ({
   return (
     <S.Container style={props} onClick={() => history.push(`/plants/${id}`)}>
       {hasPastWateringDate && (
-        <>
-          <S.NeedsWaterTitle>Time to water</S.NeedsWaterTitle>
-          <S.WaterIcon
-            onClick={(e) => handleWatering(id, e)}
-            style={styles}
-            src={warningWater}
-            alt="water"
-          />
-        </>
+        <S.WaterIcon
+          style={styles}
+          src={warningWater}
+          alt="water"
+          onClick={(e) => handleWatering(id, e)}
+          config={{ tension: 500, friction: 0, clamp: true }}
+        />
+        // <S.WaterAlert
+        //   onClick={(e) => handleWatering(id, e)}
+        //   style={styles}
+        //   config={{ tension: 500, friction: 0, clamp: true }}
+        // >   </S.WaterAlert>
+        // <S.NeedsWaterTitle>Time to water</S.NeedsWaterTitle>
       )}
       <S.Image src={img} />
       <h3>{title}</h3>

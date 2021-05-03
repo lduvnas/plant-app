@@ -37,14 +37,28 @@ export const Icon = styled.img`
   height: 20px;
 `;
 
+// export const WaterAlert = styled(animated.div)`
+//   border-radius: 7px;
+//   padding: 5px 10px;
+//   display: flex;
+//   flex-direction: row;
+//   margin-left: 10px;
+//   margin-top: 10px;
+//   align-items: center;
+//   justify-content: center;
+//   position: absolute;
+//   cursor: pointer;
+// `;
+
 export const WaterIcon = styled(animated.img)`
-  position: absolute;
-  margin: 10px;
   z-index: 2;
+  position: absolute;
+  margin-left: 10px;
+  margin-top: 10px;
+  cursor: pointer;
 `;
 
-export const NeedsWaterTitle = styled.h4`
-  position: absolute;
-  margin: 10px;
-  margin-left: 40px;
+export const NeedsWaterTitle = styled.h5`
+  color: #fff;
+  /* position: absolute; */
 `;

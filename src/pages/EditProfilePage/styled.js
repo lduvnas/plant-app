@@ -58,8 +58,8 @@ export const RemoveIcon = styled.img`
   width: 40px;
   position: absolute;
   cursor: pointer;
-  left: -270px;
-  top: 80px;
+  left: -365px;
+  top: 120px;
 `;
 
 export const Input = styled.input`
