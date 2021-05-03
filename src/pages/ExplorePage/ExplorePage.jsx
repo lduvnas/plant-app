@@ -46,8 +46,6 @@ const ExplorePage = () => {
     localStorage.setItem("searchTerms", JSON.stringify(storedSearchTerms));
   };
 
-  console.log(filtredPlants);
-
   return (
     <S.Container>
       <Navbar />
