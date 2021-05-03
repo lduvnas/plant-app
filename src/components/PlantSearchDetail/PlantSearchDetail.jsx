@@ -14,6 +14,8 @@ const PlantSearchDetail = ({
   id,
   temperature,
   light,
+  storeInLocalStorage,
+  searchTerm,
 }) => {
   const history = useHistory();
   const animationProps = useSpring({
@@ -28,11 +30,13 @@ const PlantSearchDetail = ({
     if (light === "High") return <S.Icon src={sunny} alt="" />;
   };
 
+  const handleOnClick = () => {
+    history.push(`/plants/${id}`);
+    storeInLocalStorage(searchTerm);
+  };
+
   return (
-    <S.Container
-      style={animationProps}
-      onClick={() => history.push(`/plants/${id}`)}
-    >
+    <S.Container style={animationProps} onClick={handleOnClick}>
       {/* <FavoriteButton plantId={id} /> */}
       <S.Image src={img} />
 

@@ -35,15 +35,41 @@ export const PlantListContainer = styled.div`
   grid-template-columns: repeat(3, 1fr);
   /* justify-content: space-between; */
   /* width: 800px; */
+  margin-bottom: 5em;
 `;
 
 export const FilterCard = styled.div`
   background-color: #dbedea;
   border-radius: 10px;
-  padding: 5px 10px;
+  padding: 5px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 60px;
+  /* max-width: 60px; */
   font-size: 10px;
+  margin-left: 1em;
+  position: relative;
+  cursor: pointer;
+`;
+
+export const SearchFilterTitle = styled.h4`
+  text-align: center;
+  margin: 0.5em;
+`;
+
+export const SearchTermContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  /*
+  margin-top: 0.5em;
+  margin-bottom: 3em; */
+`;
+
+export const ClearIcon = styled.img`
+  position: absolute;
+  cursor: pointer;
+  top: -6px;
+  right: -6px;
+  height: 15px;
+  height: 15px;
 `;
