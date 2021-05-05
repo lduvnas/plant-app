@@ -4,6 +4,8 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Input from "../Input";
 import Button from "../Button";
+import signup from "../../assets/svg/signup.svg";
+import welcomeSignup from "../../assets/svg/welcomeSignup.svg";
 
 const SignupForm = () => {
   const nameRef = useRef();
@@ -39,26 +41,41 @@ const SignupForm = () => {
 
   return (
     <S.Container>
-      <h1>Sign Up</h1>
+      {/* <h1>Sign Up</h1> */}
       {error && <p>{error}</p>}
-      <S.Form onSubmit={handleSubmit}>
-        <Input type="text" placeholder="display name" refs={nameRef} required />
-        <Input type="email" placeholder="email" refs={emailRef} required />
-        <Input
-          type="password"
-          placeholder="password"
-          refs={passwordRef}
-          required
-        />
-        <Input
-          type="password"
-          placeholder="password confirm"
-          refs={passwordConfirmRef}
-          required
-        />
-        <Button disabled={loading} type="submit" title="Sign Up" />
-        already have an account? <Link to="/login">Login Up</Link>
-      </S.Form>
+      <S.ContainerLeft>
+        <S.Image src={signup} alt="signup" />
+      </S.ContainerLeft>
+      <S.ContainerRight>
+        <S.Form onSubmit={handleSubmit}>
+          <S.WelcomeTitle src={welcomeSignup} alt="signup" />
+          <Input
+            type="text"
+            placeholder="display name"
+            refs={nameRef}
+            required
+          />
+          <Input type="email" placeholder="email" refs={emailRef} required />
+          <Input
+            type="password"
+            placeholder="password"
+            refs={passwordRef}
+            required
+          />
+          <Input
+            type="password"
+            placeholder="password confirm"
+            refs={passwordConfirmRef}
+            required
+          />
+          <Button disabled={loading} type="submit" title="Sign Up" />
+        </S.Form>
+        <S.LinkContainer>
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+        </S.LinkContainer>
+      </S.ContainerRight>
     </S.Container>
   );
 };
