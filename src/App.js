@@ -20,11 +20,11 @@ function App() {
             <PrivateRoute exact path="/plants/:id" component={DetailPage} />
             <PrivateRoute exact path="/explore" component={ExplorePage} />
             <PrivateRoute exact path="/edit" component={EditProfilePage} />
-            <PrivateRoute exact path="/" component={HomePage} />
+            <PrivateRoute exact path="/home" component={HomePage} />
 
             <Route path="/login" exact component={LoginForm} />
             <Route path="/signup" exact component={SignupForm} />
-            <Route path="/welcome" component={LandingPage} />
+            <Route path="/" component={LandingPage} />
           </Switch>
         </div>
       </PlantContextProvider>
