@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./styled";
-// import landing from "../../images/landing.svg";
+import landing from "../../assets/svg/landing.svg";
+import welcome from "../../assets/svg/welcome.svg";
 import Button from "../../components/Button";
 import { Link, useHistory } from "react-router-dom";
 
@@ -9,16 +10,17 @@ const LandingPage = () => {
   return (
     <S.Container>
       <S.WelcomeContainer>
-        <h1>Welcome</h1>
-        <h1>keep your plants alive</h1>
-        <p>
+        {/* <S.Title>Welcome</S.Title>
+        <S.SubTitle>keep your plants alive</S.SubTitle> */}
+        <S.Welcome src={welcome} alt="welcome" />
+        <S.Description>
           Don’t forget to take care of your plants. Lets grow your lovely plant
           and manage your entire garden.
-        </p>
+        </S.Description>
         <Button onClick={() => history.push("/signup")} title="Sign up" />
         <Link to="/login">Already have an account? Login here</Link>
       </S.WelcomeContainer>
-      {/* <img src={landing} alt="landing" /> */}
+      <S.Image src={landing} alt="landing" />
     </S.Container>
   );
 };
