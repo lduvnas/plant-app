@@ -4,7 +4,7 @@ import { COLORS } from "../../constants";
 export const Button = styled.button`
   background-color: ${COLORS.text};
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   color: ${COLORS.neutral_1};
   padding: 15px 32px;
   text-align: center;
@@ -12,6 +12,10 @@ export const Button = styled.button`
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
+  :hover {
+    background-color: #455b57e3;
+    transition-duration: 0.5s;
+  }
 `;
