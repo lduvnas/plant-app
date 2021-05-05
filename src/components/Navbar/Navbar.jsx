@@ -5,6 +5,7 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useDetectOutsideClick } from "../../useDetectOutsideClick";
 import avatar from "../../assets/svg/avatar.svg";
 import plant from "../../assets/svg/plant.svg";
+import logo from "../../assets/svg/logo.svg";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 
 const Navbar = () => {
@@ -30,7 +31,7 @@ const Navbar = () => {
 
   return (
     <S.Container>
-      <h1>LOGO</h1>
+      <S.Logo src={logo} alt="logo" onClick={() => history.push("/home")} />
       <S.Circle>
         <img src={plant} alt="plant" />
         <Link to="/explore">Explore</Link>

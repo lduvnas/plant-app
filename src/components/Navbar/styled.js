@@ -9,7 +9,7 @@ export const Container = styled.div`
   min-height: 90px;
   background-color: ${COLORS.neutral_1};
   margin: 2em 0;
-  margin-bottom: 10em;
+  margin-bottom: 6em;
   border-radius: 8px;
   padding: 0.5em 3em;
 `;
@@ -22,7 +22,7 @@ export const Circle = styled.div`
   flex-direction: column;
   height: 120px;
   width: 120px;
-  background-color: ${COLORS.neutral_4};
+  background-color: #587771;
   border-radius: 50%;
   left: 50%;
   top: 120px;
@@ -76,4 +76,9 @@ export const Image = styled.img`
   object-fit: cover;
   border-radius: 50%;
   margin-left: 0.5em;
+`;
+
+export const Logo = styled.img`
+  height: 23px;
+  cursor: pointer;
 `;
