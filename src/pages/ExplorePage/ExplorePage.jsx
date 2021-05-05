@@ -57,7 +57,7 @@ const ExplorePage = () => {
           no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
           molestiae te.
         </S.SubTitle>
-        <Link to="/">Go back</Link>
+        <Link to="/home">Go back</Link>
         <form>
           <Input
             type="text"
