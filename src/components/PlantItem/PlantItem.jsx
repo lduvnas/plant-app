@@ -39,9 +39,7 @@ const PlantItem = ({
 
   const today = moment(Date()).format("MMMM DD, YYYY");
 
-  const hasPastWateringDate =
-    moment(today).isAfter(nextWateringDate) ||
-    moment(today).isSame(nextWateringDate);
+  const hasPastWateringDate = moment(today).isSameOrAfter(nextWateringDate);
 
   const newWateringDate = moment(today)
     .clone()
@@ -92,8 +90,8 @@ const PlantItem = ({
         </S.LevelCard>
         <S.LightCard>{getLightIcon()}</S.LightCard>
       </S.DetailsContainer>
-      <p>Next watering: {nextWateringDate}</p>
-      <p>plant intervals: {wateringInterval}</p>
+      {/* <p>Next watering: {nextWateringDate}</p>
+      <p>plant intervals: {wateringInterval}</p> */}
     </S.Container>
   );
 };
