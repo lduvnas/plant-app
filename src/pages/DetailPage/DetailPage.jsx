@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./styled";
 import { db } from "../../firebase";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import calender from "../../assets/svg/calender.svg";
 import sun from "../../assets/svg/sun.svg";
@@ -16,6 +16,7 @@ import CommentsSection from "../../components/CommentsSection/CommentsSection";
 const DetailPage = (props) => {
   const [plant, setPlant] = useState({});
   const id = props.match.params.id;
+  const history = useHistory();
 
   const animationProps = useSpring({
     to: { opacity: 1 },
@@ -89,7 +90,7 @@ const DetailPage = (props) => {
           <p>{plant.description}</p>
           <S.CareTitle>Care tips</S.CareTitle>
           <p>{plant.care}</p>
-          <Link to="/">Go back</Link>
+          <p onClick={() => history.goBack()}>Go back</p>
         </S.PlantDetails>
       </S.PlantDetailContainer>
       <CommentsSection plant={plant} id={id} />
