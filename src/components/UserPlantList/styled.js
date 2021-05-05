@@ -6,5 +6,5 @@ export const Container = styled.div`
   grid-template-columns: repeat(4, 1fr);
   /* justify-content: space-between; */
   width: 1000px;
-  margin-top: 2em;
+  /* margin-bottom: 2em; */
 `;
