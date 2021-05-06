@@ -4,27 +4,31 @@ import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
 import Button from "../Button";
 import Input from "../Input";
-// import gardening from "../../assets/svg/gardening.svg";
-// import login from "../../assets/svg/login.svg";
-// import login from "../../assets/svg/login.svg";
 import welcomeLogin from "../../assets/svg/welcomeLogin.svg";
 import loginImage from "../../assets/svg/loginImage.svg";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import loginSchema from "../../validation/loginSchema";
 
 const LoginForm = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  // const emailRef = useRef();
+  //   const passwordRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const history = useHistory();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(loginSchema),
+  });
 
+  const submitForm = async (data) => {
+    // e.preventDefault();
+    console.log(data.email, data.password);
     try {
       setError("");
       setLoading(true);
-      await login(emailRef.current.value, passwordRef.current.value);
+      await login(data.email, data.password);
       history.push("/home");
     } catch {
       setError("Failed to sign in");
@@ -36,24 +40,21 @@ const LoginForm = () => {
     <S.Container>
       <S.ContainerLeft>
         {/* <h1>Welcome Back</h1>
-        <h2>To log in please enter your email and password</h2> */}
+        <h2>To log in please enter your email and password</h2>  */}
 
         {error && <p>{error}</p>}
-        <S.Form onSubmit={handleSubmit}>
-          <S.WelcomeTitle src={welcomeLogin} alt="welcomeLogin" />
+        <S.WelcomeTitle src={welcomeLogin} alt="welcomeLogin" />
+        <S.Form onSubmit={handleSubmit(submitForm)}>
+          <Input type="text" name="email" placeholder="email" refs={register} />
+          <p>{errors.email?.message}</p>
           <Input
-            type="email"
-            placeholder="email"
-            refs={emailRef}
-            required="required"
-          />
-          <Input
-            type="password"
+            type="text"
+            name="password"
             placeholder="password"
-            refs={passwordRef}
-            required
+            refs={register}
           />
-          <Button disabled={loading} type="submit" title="Login" />
+          <p>{errors.password?.message}</p>
+          <Button type="submit" title="Login" />
           Need an account? <Link to="/signup">Sign Up</Link>
         </S.Form>
       </S.ContainerLeft>
@@ -61,8 +62,6 @@ const LoginForm = () => {
       <S.ContainerRight>
         <S.Image src={loginImage} alt="login" />
       </S.ContainerRight>
-
-      {/* <S.Image src={gardening} alt="gardening" /> */}
     </S.Container>
   );
 };
