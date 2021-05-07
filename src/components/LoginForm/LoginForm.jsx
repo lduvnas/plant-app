@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import * as S from "./styled";
 import { useAuth } from "../../contexts/AuthContext";
 import { Link, useHistory } from "react-router-dom";
@@ -11,29 +11,23 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../validation/loginSchema";
 
 const LoginForm = () => {
-  // const emailRef = useRef();
-  //   const passwordRef = useRef();
   const { login } = useAuth();
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
   const history = useHistory();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(loginSchema),
   });
 
-  const submitForm = async (data) => {
-    // e.preventDefault();
-    console.log(data.email, data.password);
+  const submitForm = async (data, e) => {
+    e.preventDefault();
     try {
       setError("");
-      setLoading(true);
       await login(data.email, data.password);
       history.push("/home");
     } catch {
       setError("Failed to sign in");
     }
-    setLoading(false);
   };
 
   return (
@@ -43,17 +37,25 @@ const LoginForm = () => {
         <h2>To log in please enter your email and password</h2>  */}
 
         {error && <p>{error}</p>}
-        <S.WelcomeTitle src={welcomeLogin} alt="welcomeLogin" />
+
         <S.Form onSubmit={handleSubmit(submitForm)}>
-          <Input type="text" name="email" placeholder="email" refs={register} />
-          <p>{errors.email?.message}</p>
+          <S.WelcomeTitle src={welcomeLogin} alt="welcomeLogin" />
           <Input
             type="text"
-            name="password"
-            placeholder="password"
+            name="email"
+            placeholder="johndoe@email.com"
             refs={register}
+            errors={errors.email?.message}
+            label="Email"
           />
-          <p>{errors.password?.message}</p>
+          <Input
+            type="password"
+            name="password"
+            placeholder="••••••••"
+            refs={register}
+            errors={errors.password?.message}
+            label="Password"
+          />
           <Button type="submit" title="Login" />
           Need an account? <Link to="/signup">Sign Up</Link>
         </S.Form>

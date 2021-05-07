@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import firebase from "firebase/app";
 import { db } from "../../firebase";
 import { PlantContext } from "../../contexts/PlantContextProvider";
@@ -7,22 +7,29 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import Comment from "../Comment/Comment";
 import * as S from "./styled";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import commentSchema from "../../validation/commentSchema";
 
 const CommentsSection = ({ plant, id }) => {
   const { userData } = useContext(PlantContext);
   const { currentUser } = useAuth();
-  const [commentMsg, setCommentMsg] = useState("");
 
-  const handleOnSubmit = async (e) => {
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(commentSchema),
+  });
+
+  const submitForm = async (data, e) => {
     e.preventDefault();
     e.target.reset();
+    console.log(data);
     return db
       .collection("plants")
       .doc(id)
       .update({
         comments: firebase.firestore.FieldValue.arrayUnion({
           timestamp: Date(),
-          commentMessage: commentMsg,
+          commentMessage: data.comment,
           userId: currentUser.uid,
           userDisplayName: userData.displayName,
           userAvatar: userData.userImg,
@@ -34,13 +41,14 @@ const CommentsSection = ({ plant, id }) => {
   return (
     <S.CommentsSection>
       <h3>Comments</h3>
-      <S.CommentForm onSubmit={handleOnSubmit}>
+      <S.CommentForm onSubmit={handleSubmit(submitForm)}>
         <Input
+          type="text"
+          name="comment"
           placeholder="Leave a comment"
-          value={commentMsg}
-          onChange={(event) => {
-            setCommentMsg(event.target.value);
-          }}
+          refs={register}
+          errors={errors.comment?.message}
+          // label="Comment"
         />
 
         <Button type="submit" title="Send" />
@@ -62,7 +70,7 @@ const CommentsSection = ({ plant, id }) => {
           );
         })
       ) : (
-        <p>no comments yet</p>
+        <p>No comments yet</p>
       )}
     </S.CommentsSection>
   );

@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const commentSchema = yup.object().shape({
-  content: yup
+  comment: yup
     .string()
     .required("Comment is required.")
     .trim()

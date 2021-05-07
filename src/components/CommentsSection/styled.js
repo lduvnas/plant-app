@@ -11,7 +11,7 @@ export const CommentsSection = styled.div`
 
 export const CommentForm = styled.form`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 2em;
 `;

@@ -1,7 +1,7 @@
 import * as yup from "yup";
 
 const signupSchema = yup.object().shape({
-  username: yup
+  displayName: yup
     .string()
     .required("Username is required.")
     .trim()
@@ -16,6 +16,9 @@ const signupSchema = yup.object().shape({
       RegExp(/(?!^\d+$)^.+$/),
       "The password must not only consist of numbers."
     ),
+  passwordConfirmation: yup
+    .string()
+    .oneOf([yup.ref("password"), null], "Passwords must match"),
 });
 
 export default signupSchema;
