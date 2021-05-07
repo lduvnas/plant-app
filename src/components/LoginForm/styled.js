@@ -28,6 +28,7 @@ export const ContainerRight = styled.div`
   align-items: center;
   justify-content: flex-end;
   overflow: hidden;
+  position: relative;
   /* z-index: 1; */
   /* border-bottom-left-radius: 20px; */
   /* border-top-left-radius: 20px; */
@@ -49,9 +50,29 @@ export const Form = styled.form`
 
 export const Image = styled.img`
   height: 102vh;
+  position: fixed;
+  top: 0;
+  right: 0;
 `;
 
 export const WelcomeTitle = styled.img`
   width: 300px;
   margin-bottom: 2em;
+`;
+
+export const Modal = styled.div`
+  ${({ visible }) => !visible && `display: none;`}
+  background-color: #fff;
+  height: 400px;
+  width: 500px;
+  border-radius: 10px;
+  position: absolute;
+  padding: 30px 40px;
+`;
+
+export const Close = styled.img`
+  height: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;

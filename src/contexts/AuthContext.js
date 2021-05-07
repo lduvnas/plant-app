@@ -40,6 +40,17 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
+  const sendResetPassword = (email) => {
+    auth
+      .sendPasswordResetEmail(email)
+      .then(function () {
+        console.log("email sent");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   const logout = () => {
     return auth.signOut();
   };
@@ -93,6 +104,7 @@ export function AuthProvider({ children }) {
     signupWithEmail,
     // signupWithGoogle,
     login,
+    sendResetPassword,
     logout,
     addToUserCollection,
     removeFromUserCollection,

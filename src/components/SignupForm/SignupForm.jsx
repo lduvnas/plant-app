@@ -34,9 +34,9 @@ const SignupForm = () => {
     <S.Container>
       {/* <h1>Sign Up</h1> */}
       {error && <p>{error}</p>}
-      <S.ContainerLeft>
-        <S.Image src={signup} alt="signup" />
-      </S.ContainerLeft>
+      {/* <S.ContainerLeft> */}
+      <S.Image src={signup} alt="signup" />
+      {/* </S.ContainerLeft> */}
       <S.ContainerRight>
         <S.Form onSubmit={handleSubmit(submitForm)}>
           <S.WelcomeTitle src={welcomeSignup} alt="signup" />

@@ -21,12 +21,18 @@ export const ContainerLeft = styled.div`
 `;
 
 export const Image = styled.img`
-  position: absolute;
+  /* position: absolute;
   height: 148vh;
   top: -200px;
-  left: -500px;
+  left: -500px; */
   /* margin-top: -200px;
   margin-left: -450px; */
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  /* width: 50%; */
+
   z-index: -1;
 `;
 
