@@ -5,10 +5,10 @@ const loginSchema = yup.object().shape({
     .string()
     .email("Email must be a valid email")
     .required("Email is required"),
-  resetEmail: yup
-    .string()
-    .email("Email must be a valid email")
-    .required("Email is required"),
+  // resetEmail: yup
+  //   .string()
+  //   .email("Email must be a valid email")
+  //   .required("Email is required"),
   password: yup.string().required("Password is required"),
 });
 

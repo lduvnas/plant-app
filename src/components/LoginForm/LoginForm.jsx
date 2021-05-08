@@ -22,6 +22,7 @@ const LoginForm = () => {
   });
 
   const submitForm = async (data, e) => {
+    console.log("here");
     e.preventDefault();
     try {
       setError("");
@@ -40,6 +41,7 @@ const LoginForm = () => {
 
   return (
     <S.Container>
+      <S.BackgroundContainer></S.BackgroundContainer>
       <S.ContainerLeft>
         {/* <h1>Welcome Back</h1>
         <h2>To log in please enter your email and password</h2>  */}
@@ -65,10 +67,13 @@ const LoginForm = () => {
             label="Password"
           />
           <Button type="submit" title="Login" />
-          Need an account? <Link to="/signup">Sign Up</Link>
+          <S.SignupLinkContainer>
+            <p> Need an account? </p>
+            <Link to="/signup">Sign Up</Link>
+          </S.SignupLinkContainer>
         </S.Form>
 
-        <Button title="open modal" onClick={() => setModalVisible(true)} />
+        {/* <Button title="open modal" onClick={() => setModalVisible(true)} />
         <S.Modal visible={modalVisible}>
           <h3>Forgot your password?</h3>
 
@@ -89,7 +94,7 @@ const LoginForm = () => {
             alt="Close"
             onClick={() => setModalVisible(false)}
           />
-        </S.Modal>
+        </S.Modal> */}
       </S.ContainerLeft>
 
       <S.ContainerRight>
