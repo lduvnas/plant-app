@@ -22,7 +22,6 @@ const LoginForm = () => {
   });
 
   const submitForm = async (data, e) => {
-    console.log("here");
     e.preventDefault();
     try {
       setError("");
@@ -33,11 +32,11 @@ const LoginForm = () => {
     }
   };
 
-  const submitResetPasswordForm = async (data, e) => {
-    e.preventDefault();
-    console.log(data);
-    // sendResetPassword(data.email);
-  };
+  // const submitResetPasswordForm = async (data, e) => {
+  //   e.preventDefault();
+  //   console.log(data);
+  //   // sendResetPassword(data.email);
+  // };
 
   return (
     <S.Container>
