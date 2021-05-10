@@ -1,6 +1,7 @@
 import React from "react";
 import * as S from "./styled";
 import warning from "../../assets/svg/warning.svg";
+import paperPlane from "../../assets/svg/paperPlane.svg";
 
 const Input = ({
   type,
@@ -11,19 +12,28 @@ const Input = ({
   name,
   errors,
   label,
+  sendIcon,
 }) => {
   return (
-    <S.Container>
+    <S.Container sendIcon={sendIcon}>
       <S.Label>{label}</S.Label>
-      <S.Input
-        type={type}
-        name={name}
-        placeholder={placeholder}
-        ref={refs}
-        // required={required}
-        onChange={onChange}
-        errors={errors}
-      />
+      <S.InputWrapper>
+        <S.Input
+          type={type}
+          name={name}
+          placeholder={placeholder}
+          ref={refs}
+          // required={required}
+          onChange={onChange}
+          errors={errors}
+          sendIcon={sendIcon}
+        />
+        {sendIcon && (
+          <S.SendButton type="submit">
+            <S.PaperPlaneIcon src={paperPlane} alt="paper plane" />
+          </S.SendButton>
+        )}
+      </S.InputWrapper>
       <S.ErrorMessageContainer>
         {errors && (
           <S.ErrorMessage>

@@ -22,7 +22,7 @@ export const Circle = styled.div`
   flex-direction: column;
   height: 120px;
   width: 120px;
-  background-color: #587771;
+  background-color: #ebebeb;
   border-radius: 50%;
   left: 50%;
   top: 120px;

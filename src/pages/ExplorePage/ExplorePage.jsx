@@ -6,6 +6,8 @@ import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
 import PlantSearchDetail from "../../components/PlantSearchDetail/PlantSearchDetail";
 import close from "../../assets/svg/close.svg";
+import GoBackLink from "../../components/GoBackLink";
+import search from "../../assets/svg/search.svg";
 
 const ExplorePage = () => {
   const { plantListData } = useContext(PlantContext);
@@ -49,7 +51,7 @@ const ExplorePage = () => {
   return (
     <S.Container>
       <Navbar />
-
+      {/* <GoBackLink /> */}
       <S.Wrapper>
         <S.Title>Lorem ipsum dolor sit amet eam quas malorum accusam</S.Title>
         <S.SubTitle>
@@ -57,7 +59,8 @@ const ExplorePage = () => {
           no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
           molestiae te.
         </S.SubTitle>
-        <Link to="/home">Go back</Link>
+        {/* <Link to="/home">Go back</Link> */}
+
         <form>
           <Input
             type="text"
@@ -117,7 +120,11 @@ const ExplorePage = () => {
             );
           })
         ) : (
-          <p>no results</p>
+          <S.NoResults>
+            <S.SearchIcon src={search} alt="search" />
+            <h3>Sorry we couldn't find any matches for "{searchTerm}"</h3>
+            <p>Please try searching with another term</p>
+          </S.NoResults>
         )}
       </S.PlantListContainer>
     </S.Container>

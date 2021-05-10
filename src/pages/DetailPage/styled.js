@@ -9,9 +9,6 @@ export const CardStyle = css`
   align-items: center;
   justify-items: center;
   grid-template-columns: 1fr 2fr;
-  /* display: flex;
-  align-items: center;
-  justify-items: center; */
 `;
 
 export const PlantTitle = styled.h1`
@@ -55,7 +52,7 @@ export const PlantDetailContainer = styled(animated.div)`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 5em;
+  margin-top: 3em;
   margin-bottom: 3em;
 `;
 
@@ -93,4 +90,25 @@ export const Icon = styled.img`
 export const CareTitle = styled.h3`
   margin-top: 2em;
   margin-bottom: 1em;
+`;
+
+export const CommentsSectionWrapper = styled.div`
+  background-color: #fababa;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+`;
+
+export const Wave = styled.img`
+  width: 120vw;
+  background: #f7f7f7;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 1000px;
 `;

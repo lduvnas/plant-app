@@ -18,6 +18,7 @@ export const Title = styled.h1`
   text-align: center;
   letter-spacing: 0.2px;
   margin-bottom: 0.5em;
+  margin-top: 1em;
 `;
 
 export const SubTitle = styled.h2`
@@ -27,6 +28,7 @@ export const SubTitle = styled.h2`
   text-align: center;
   letter-spacing: 0.3px;
   font-weight: 400;
+  margin-bottom: 2em;
 `;
 
 export const PlantListContainer = styled.div`
@@ -72,4 +74,18 @@ export const ClearIcon = styled.img`
   right: -6px;
   height: 15px;
   height: 15px;
+`;
+
+export const NoResults = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  grid-column: span 3;
+  margin-top: 4em;
+  text-align: center;
+`;
+
+export const SearchIcon = styled.img`
+  height: 70px;
 `;

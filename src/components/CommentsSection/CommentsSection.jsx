@@ -10,6 +10,7 @@ import * as S from "./styled";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import commentSchema from "../../validation/commentSchema";
+import chat from "../../assets/svg/chat.svg";
 
 const CommentsSection = ({ plant, id }) => {
   const { userData } = useContext(PlantContext);
@@ -49,9 +50,11 @@ const CommentsSection = ({ plant, id }) => {
           refs={register}
           errors={errors.comment?.message}
           // label="Comment"
+          sendIcon
+          styled={{ height: 50 }}
         />
 
-        <Button type="submit" title="Send" />
+        {/* <Button type="submit" title="Send" /> */}
       </S.CommentForm>
 
       {plant.comments ? (
@@ -70,7 +73,10 @@ const CommentsSection = ({ plant, id }) => {
           );
         })
       ) : (
-        <p>No comments yet</p>
+        <S.NoCommentsYet>
+          <S.ChatIcon src={chat} alt="chat" /> No comments yet, be the first to
+          share your toughts
+        </S.NoCommentsYet>
       )}
     </S.CommentsSection>
   );

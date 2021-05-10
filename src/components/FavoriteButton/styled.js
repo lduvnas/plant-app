@@ -5,7 +5,12 @@ export const HeartButton = styled.button`
   text-decoration: none;
   background-color: transparent;
   border: none;
-  margin: 20px;
+  margin: 15px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+  }
 `;
 
 export const HeartIcon = styled.img`
