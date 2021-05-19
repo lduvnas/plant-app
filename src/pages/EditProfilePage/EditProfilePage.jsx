@@ -52,7 +52,7 @@ const HomePage = () => {
   console.log(displayName);
   return (
     <S.Container>
-      <S.Wave src={wave4} alt="wave" />
+      {/* <S.Wave src={wave4} alt="wave" /> */}
       <Navbar />
       <S.EditProfileContainer>
         <S.Header>
@@ -62,35 +62,37 @@ const HomePage = () => {
             ) : (
               <S.Image src={avatar} alt="avatar" />
             )}
-            <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" />
+            {/* <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" /> */}
+            <S.ImageContainerDetails>
+              <h1>{userData.displayName}</h1>
+              <p>{currentUser.email}</p>
+            </S.ImageContainerDetails>
           </S.ImageContainer>
+
           {/* <h2>Edit Profile</h2> */}
-          <h1>{userData.displayName}</h1>
-          <p>{currentUser.email}</p>
         </S.Header>
-        {/* <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 180">
           <path
             fill="#FABABA"
             fill-opacity="1"
             d="M0,32L80,37.3C160,43,320,53,480,74.7C640,96,800,128,960,122.7C1120,117,1280,75,1360,53.3L1440,32L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
           ></path>
-        </svg> */}
-
-        <S.ContentContainer>
-          <S.Form onSubmit={onSubmit}>
-            <S.Input
-              defaultValue={userData.displayName}
-              onChange={(event) => {
-                setDisplayName(event.target.value);
-              }}
-            />
-            <S.Input value={currentUser.email} />
-            <S.Input value="●●●●●●●●" />
-            <S.Input value="●●●●●●●●" />
-            <input type="file" onChange={onFileChange} />
-            <Button disabled={fileUrl === ""} title="upload to firebase" />
-          </S.Form>
-        </S.ContentContainer>
+        </svg>
+        {/* <S.ContentContainer> */}
+        <S.Form onSubmit={onSubmit}>
+          <S.Input
+            defaultValue={userData.displayName}
+            onChange={(event) => {
+              setDisplayName(event.target.value);
+            }}
+          />
+          <S.Input value={currentUser.email} />
+          <S.Input value="●●●●●●●●" />
+          <S.Input value="●●●●●●●●" />
+          <input type="file" onChange={onFileChange} />
+          <Button disabled={fileUrl === ""} title="upload to firebase" />
+        </S.Form>
+        {/* </S.ContentContainer> */}
       </S.EditProfileContainer>
     </S.Container>
   );

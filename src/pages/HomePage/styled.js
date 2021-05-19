@@ -15,7 +15,7 @@ export const Wave1 = styled.img`
   left: 0;
   z-index: -1;
   opacity: 0.8;
-  width: 24vw;
+  width: 20vw;
 `;
 
 export const Wave2 = styled.img`
@@ -24,7 +24,7 @@ export const Wave2 = styled.img`
   bottom: -3%;
   z-index: -1;
   opacity: 0.8;
-  width: 20vw;
+  width: 15vw;
 `;
 
 export const Title = styled.h2`

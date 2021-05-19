@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Wave = styled.img`
   position: fixed;
-  top: -400px;
+  top: -500px;
   width: 100%;
   z-index: -1;
 `;
@@ -19,26 +19,27 @@ export const Wave = styled.img`
 export const EditProfileContainer = styled.div`
   background-color: #fff;
   border-radius: 12px;
-  width: 60%;
+  width: 1000px;
   /* padding: 30px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 8em;
-  height: 500px;
+  /* height: 500px; */
   /* z-index: -2; */
 `;
 
 export const Header = styled.div`
-  /* background-color: #fababa; */
+  background-color: #fababa;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 12px 12px 0 0;
   width: 100%;
   position: relative;
-  padding-top: 3em;
-  padding-right: 20em;
+  /* padding-top: 3em;
+  padding-right: 20em; */
+  min-height: 180px;
 `;
 
 export const ContentWrapper = styled.div`
@@ -49,10 +50,22 @@ export const ContentWrapper = styled.div`
 
 export const ImageContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px 20px;
+  padding-left: 130px;
+  box-shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.05);
   position: absolute;
-  left: -100px;
+  min-width: 700px;
+  min-height: 120px;
+  left: 150px;
+  top: 100px;
 `;
+
+export const ImageContainerDetails = styled.div``;
 
 export const ContentContainer = styled.div`
   display: flex;
@@ -69,12 +82,15 @@ export const Form = styled.form`
 `;
 
 export const Image = styled.img`
-  width: 350px;
-  height: 350px;
+  width: 250px;
+  height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  padding: 10px;
-  background-color: #f7f7f7;
+  /* padding: 10px;
+  background-color: #f7f7f7; */
+  position: absolute;
+  left: 50px;
+  /* top: -70px; */
 `;
 
 export const RemoveIcon = styled.img`

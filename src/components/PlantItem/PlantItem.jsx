@@ -83,7 +83,7 @@ const PlantItem = ({
         // <S.NeedsWaterTitle>Time to water</S.NeedsWaterTitle>
       )}
       <S.Image src={img} />
-      <h3>{title}</h3>
+      <S.Title>{title}</S.Title>
       <S.DetailsContainer>
         <S.LevelCard>
           <p>Level: {careLevel}</p>

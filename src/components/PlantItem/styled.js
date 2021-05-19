@@ -2,14 +2,23 @@ import styled from "styled-components";
 import { animated } from "react-spring";
 
 export const Container = styled(animated.div)`
-  max-width: 200px;
+  max-width: 220px;
+  /* background-color: #fff; */
+  border-radius: 10px;
+  @media (max-width: 500px) {
+    transform: scale(0.8);
+  }
 `;
 
 export const Image = styled.img`
   width: 220px;
   height: 300px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 10px 10px 0 0;
+`;
+
+export const Title = styled.h3`
+  margin-left: 10px;
 `;
 
 export const DetailsContainer = styled.div`
@@ -17,6 +26,7 @@ export const DetailsContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
 `;
 
 export const LevelCard = styled.div`

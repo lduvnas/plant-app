@@ -35,8 +35,7 @@ const CommentsSection = ({ plant, id }) => {
           userDisplayName: userData.displayName,
           userAvatar: userData.userImg,
         }),
-      })
-      .then(() => console.log("comment added"));
+      });
   };
 
   return (
