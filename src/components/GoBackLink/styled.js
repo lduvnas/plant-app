@@ -6,4 +6,8 @@ export const GoBackText = styled.p`
   font-weight: 600;
   align-self: flex-start;
   cursor: pointer;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
 `;

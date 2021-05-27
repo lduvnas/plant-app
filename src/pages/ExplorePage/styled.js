@@ -54,6 +54,10 @@ export const FilterCard = styled.div`
   margin-left: 1em;
   position: relative;
   cursor: pointer;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
   text-transform: capitalize;
 `;
 

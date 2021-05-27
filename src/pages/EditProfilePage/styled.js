@@ -89,6 +89,10 @@ export const RemoveIcon = styled.img`
   left: 65px;
   top: 130px;
   z-index: 2;
+  :hover {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+  }
 `;
 
 export const Input = styled.input`

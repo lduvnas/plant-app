@@ -49,6 +49,10 @@ export const MenuTrigger = styled.div`
   align-items: center;
   padding: 4px 6px;
   border: none;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
 `;
 
 export const Menu = styled.nav`
@@ -81,8 +85,16 @@ export const Image = styled.img`
 export const Logo = styled.img`
   height: 23px;
   cursor: pointer;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
 `;
 
 export const Link = styled.p`
   cursor: pointer;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
 `;

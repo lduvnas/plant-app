@@ -3,6 +3,10 @@ import styled from "styled-components";
 export const Container = styled.div`
   max-width: 200px;
   cursor: pointer;
+  :hover {
+    opacity: 0.7;
+    transition-duration: 0.5s;
+  }
 `;
 
 export const Image = styled.img`

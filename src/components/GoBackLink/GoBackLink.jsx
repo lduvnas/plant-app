@@ -7,7 +7,7 @@ const GoBackLink = () => {
   const history = useHistory();
   return (
     <S.GoBackText onClick={() => history.goBack()}>
-      <img src={goBack} alt="go back" /> Go back
+      <img src={goBack} alt="go back" />
     </S.GoBackText>
   );
 };

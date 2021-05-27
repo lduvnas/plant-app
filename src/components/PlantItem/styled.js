@@ -53,6 +53,10 @@ export const WaterIcon = styled(animated.img)`
   margin-left: 10px;
   margin-top: 10px;
   cursor: pointer;
+  :hover {
+    transform: scale(1.2);
+    transition-duration: 0.8s;
+  }
 `;
 
 export const NeedsWaterTitle = styled.h5`

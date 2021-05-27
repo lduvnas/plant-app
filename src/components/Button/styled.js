@@ -15,7 +15,7 @@ export const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
   :hover {
-    background-color: #455b57e3;
+    opacity: 0.7;
     transition-duration: 0.5s;
   }
 `;

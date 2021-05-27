@@ -48,4 +48,8 @@ export const DeleteIcon = styled.img`
   position: absolute;
   top: -10px;
   left: 490px;
+  :hover {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+  }
 `;

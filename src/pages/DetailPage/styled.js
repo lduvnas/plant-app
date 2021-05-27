@@ -81,7 +81,7 @@ export const CareTitle = styled.h3`
   margin-bottom: 1em;
 `;
 
-export const CommentsSectionWrapper = styled.div`
+export const CommentsSectionWrapper = styled(animated.div)`
   background-color: #fababa;
   width: 100%;
   display: flex;

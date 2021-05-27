@@ -67,7 +67,7 @@ const DetailPage = (props) => {
               <S.TemperatureCard>
                 <S.Icon src={temperature} alt="temperature" />
                 <S.CardTitle>Temp.</S.CardTitle>
-                <p>{plant.temperature}</p>
+                <p>{plant.temperature}°</p>
               </S.TemperatureCard>
               <S.LightCard>
                 <S.Icon src={sun} alt="sun" />
@@ -87,7 +87,7 @@ const DetailPage = (props) => {
         </S.PlantDetailContainer>
       </S.Wrapper>
 
-      <S.CommentsSectionWrapper>
+      <S.CommentsSectionWrapper style={animationProps}>
         <S.Wave src={wave3} alt="wave3" />
         <CommentsSection plant={plant} id={id} />
       </S.CommentsSectionWrapper>

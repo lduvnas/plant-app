@@ -69,9 +69,8 @@ export const SendButton = styled.button`
   width: 50px;
   border-radius: 0 8px 8px 0;
   right: 0px;
-
   :hover {
-    background-color: #455b57e3;
+    opacity: 0.7;
     transition-duration: 0.5s;
   }
 `;
