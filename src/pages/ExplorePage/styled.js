@@ -36,6 +36,11 @@ export const PlantListContainer = styled.div`
   grid-gap: 3em;
   grid-template-columns: repeat(3, 1fr);
   margin-bottom: 5em;
+  margin-top: 2em;
+`;
+
+export const Form = styled.form`
+  margin-bottom: 2em;
 `;
 
 export const FilterCard = styled.div`
@@ -49,6 +54,7 @@ export const FilterCard = styled.div`
   margin-left: 1em;
   position: relative;
   cursor: pointer;
+  text-transform: capitalize;
 `;
 
 export const SearchFilterTitle = styled.h4`

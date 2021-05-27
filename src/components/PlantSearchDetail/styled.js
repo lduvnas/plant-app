@@ -6,6 +6,7 @@ export const Container = styled(animated.div)`
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Image = styled.img`

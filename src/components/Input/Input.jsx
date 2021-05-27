@@ -12,9 +12,10 @@ const Input = ({
   errors,
   label,
   sendIcon,
+  unsetHeight,
 }) => {
   return (
-    <S.Container sendIcon={sendIcon}>
+    <S.Container sendIcon={sendIcon} unsetHeight={unsetHeight}>
       <S.Label>{label}</S.Label>
       <S.InputWrapper>
         <S.Input

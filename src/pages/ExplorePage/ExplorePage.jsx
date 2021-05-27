@@ -57,16 +57,17 @@ const ExplorePage = () => {
           molestiae te.
         </S.SubTitle>
 
-        <form>
+        <S.Form>
           <Input
             type="text"
-            placeholder="search"
+            placeholder="Enter search term"
             value={searchTerm}
             onChange={(event) => {
               setSearchTerm(event.target.value);
             }}
+            unsetHeight
           />
-        </form>
+        </S.Form>
         <S.SearchFilterTitle>Categories</S.SearchFilterTitle>
         <S.SearchTermContainer>
           <S.FilterCard onClick={() => setSearchTerm("Easy")}>

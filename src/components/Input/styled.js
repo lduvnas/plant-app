@@ -4,7 +4,8 @@ import { COLORS } from "../../constants";
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: ${({ sendIcon }) => (sendIcon ? `unset` : `90px`)};
+  height: ${({ sendIcon, unsetHeight }) =>
+    sendIcon || unsetHeight ? `unset` : `90px`};
 `;
 
 export const Label = styled.label`
