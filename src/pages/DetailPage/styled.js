@@ -22,17 +22,6 @@ export const CardTitle = styled.h3`
   margin: 0;
 `;
 
-export const CareLabel = styled.div`
-  background-color: #bee5b0;
-  color: #7cb468;
-  border-radius: 5px;
-  border: 1px solid #7cb468;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 60px;
-`;
-
 export const Container = styled.div`
   display: flex;
   align-items: center;

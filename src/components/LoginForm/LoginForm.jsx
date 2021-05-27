@@ -6,16 +6,14 @@ import Button from "../Button";
 import Input from "../Input";
 import welcomeLogin from "../../assets/svg/welcomeLogin.svg";
 import loginImage from "../../assets/svg/loginImage.svg";
-import close from "../../assets/svg/close.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import loginSchema from "../../validation/loginSchema";
 
 const LoginForm = () => {
-  const { login, sendResetPassword } = useAuth();
+  const { login } = useAuth();
   const [error, setError] = useState("");
   const history = useHistory();
-  const [modalVisible, setModalVisible] = useState(false);
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(loginSchema),
@@ -32,21 +30,11 @@ const LoginForm = () => {
     }
   };
 
-  // const submitResetPasswordForm = async (data, e) => {
-  //   e.preventDefault();
-  //   console.log(data);
-  //   // sendResetPassword(data.email);
-  // };
-
   return (
     <S.Container>
-      <S.BackgroundContainer></S.BackgroundContainer>
+      <S.BackgroundContainer />
       <S.ContainerLeft>
-        {/* <h1>Welcome Back</h1>
-        <h2>To log in please enter your email and password</h2>  */}
-
         {error && <p>{error}</p>}
-
         <S.Form onSubmit={handleSubmit(submitForm)}>
           <S.WelcomeTitle src={welcomeLogin} alt="welcomeLogin" />
           <Input
@@ -67,33 +55,11 @@ const LoginForm = () => {
           />
           <Button type="submit" title="Login" />
           <S.SignupLinkContainer>
-            <p> Need an account? </p>
-            <Link to="/signup">Sign Up</Link>
+            <p>
+              Need an account? <Link to="/signup"> Sign Up</Link>{" "}
+            </p>
           </S.SignupLinkContainer>
         </S.Form>
-
-        {/* <Button title="open modal" onClick={() => setModalVisible(true)} />
-        <S.Modal visible={modalVisible}>
-          <h3>Forgot your password?</h3>
-
-          <form onSubmit={handleSubmit(submitResetPasswordForm)}>
-            <Input
-              type="text"
-              name="resetEmail"
-              placeholder="johndoe@email.com"
-              refs={register}
-              errors={errors.resetEmail?.message}
-              label="Email"
-            />
-            <Button type="submit" title="Send" />
-          </form>
-
-          <S.Close
-            src={close}
-            alt="Close"
-            onClick={() => setModalVisible(false)}
-          />
-        </S.Modal> */}
       </S.ContainerLeft>
 
       <S.ContainerRight>

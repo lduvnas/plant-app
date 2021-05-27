@@ -35,8 +35,6 @@ export const PlantListContainer = styled.div`
   display: grid;
   grid-gap: 3em;
   grid-template-columns: repeat(3, 1fr);
-  /* justify-content: space-between; */
-  /* width: 800px; */
   margin-bottom: 5em;
 `;
 
@@ -47,7 +45,6 @@ export const FilterCard = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* max-width: 60px; */
   font-size: 10px;
   margin-left: 1em;
   position: relative;
@@ -62,9 +59,6 @@ export const SearchFilterTitle = styled.h4`
 export const SearchTermContainer = styled.div`
   display: flex;
   justify-content: center;
-  /*
-  margin-top: 0.5em;
-  margin-bottom: 3em; */
 `;
 
 export const ClearIcon = styled.img`

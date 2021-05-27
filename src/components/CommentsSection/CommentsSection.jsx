@@ -4,7 +4,6 @@ import { db } from "../../firebase";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 import { useAuth } from "../../contexts/AuthContext";
 import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
 import Comment from "../Comment/Comment";
 import * as S from "./styled";
 import { useForm } from "react-hook-form";
@@ -48,12 +47,9 @@ const CommentsSection = ({ plant, id }) => {
           placeholder="Leave a comment"
           refs={register}
           errors={errors.comment?.message}
-          // label="Comment"
           sendIcon
           styled={{ height: 50 }}
         />
-
-        {/* <Button type="submit" title="Send" /> */}
       </S.CommentForm>
 
       {plant.comments ? (

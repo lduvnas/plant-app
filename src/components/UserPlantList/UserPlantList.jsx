@@ -8,7 +8,6 @@ const UserPlantList = () => {
 
   return (
     <S.Container>
-      {/* Checks if theres any plants in favoritesListData */}
       {favoritesListData && favoritesListData.length === 0 ? (
         <p>No plants yet</p>
       ) : (

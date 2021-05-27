@@ -34,23 +34,10 @@ export default function PlantContextProvider({ children }) {
     }
   };
 
-  // const getUserData = () => {
-  //   return db
-  //     .collection("users")
-  //     .doc(currentUser.uid)
-  //     .onSnapshot((doc) => {
-  //       console.log("fetching userData");
-  //       if (doc.exists) {
-  //         setUserData(doc.data());
-  //         console.log(userData);
-  //       }
-  //     });
-  // };
-
   useEffect(() => {
     fetchFavorites();
     fetchPlants();
-    // getUserData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   return (

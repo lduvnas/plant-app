@@ -2,7 +2,7 @@ import React from "react";
 import * as S from "./styled";
 import { useHistory } from "react-router-dom";
 
-const DiscoverItem = ({ title, careLevel, img, id, temperature, light }) => {
+const DiscoverItem = ({ title, img, id }) => {
   const history = useHistory();
 
   return (

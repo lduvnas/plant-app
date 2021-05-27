@@ -52,17 +52,6 @@ const PlantItem = ({
     db.collection("plants").doc(id).update({
       nextWateringDate: newWateringDate,
     });
-
-    console.log(
-      "lastwatering: ",
-      nextWateringDate,
-      "Todays date: ",
-      today,
-      "has pastWatering Date: ",
-      hasPastWateringDate,
-      "new date for watering: ",
-      newWateringDate
-    );
   };
 
   return (
@@ -75,12 +64,6 @@ const PlantItem = ({
           onClick={(e) => handleWatering(id, e)}
           config={{ tension: 500, friction: 0, clamp: true }}
         />
-        // <S.WaterAlert
-        //   onClick={(e) => handleWatering(id, e)}
-        //   style={styles}
-        //   config={{ tension: 500, friction: 0, clamp: true }}
-        // >   </S.WaterAlert>
-        // <S.NeedsWaterTitle>Time to water</S.NeedsWaterTitle>
       )}
       <S.Image src={img} />
       <S.Title>{title}</S.Title>
@@ -90,8 +73,8 @@ const PlantItem = ({
         </S.LevelCard>
         <S.LightCard>{getLightIcon()}</S.LightCard>
       </S.DetailsContainer>
-      {/* <p>Next watering: {nextWateringDate}</p>
-      <p>plant intervals: {wateringInterval}</p> */}
+      <p>Next watering: {nextWateringDate}</p>
+      <p>plant intervals: {wateringInterval}</p>
     </S.Container>
   );
 };

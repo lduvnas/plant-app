@@ -3,10 +3,8 @@ import * as S from "./styled";
 import { PlantContext } from "../../contexts/PlantContextProvider";
 import Input from "../../components/Input";
 import Navbar from "../../components/Navbar";
-import { Link } from "react-router-dom";
 import PlantSearchDetail from "../../components/PlantSearchDetail/PlantSearchDetail";
 import close from "../../assets/svg/close.svg";
-import GoBackLink from "../../components/GoBackLink";
 import search from "../../assets/svg/search.svg";
 
 const ExplorePage = () => {
@@ -51,15 +49,13 @@ const ExplorePage = () => {
   return (
     <S.Container>
       <Navbar />
-      {/* <GoBackLink /> */}
       <S.Wrapper>
-        <S.Title>Lorem ipsum dolor sit amet eam quas malorum accusam</S.Title>
+        <S.Title>Let's find a plant that fits your home</S.Title>
         <S.SubTitle>
           Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
           no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
           molestiae te.
         </S.SubTitle>
-        {/* <Link to="/home">Go back</Link> */}
 
         <form>
           <Input

@@ -6,7 +6,6 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
-  /* height: 100vh; */
 `;
 
 export const Wave1 = styled.img`

@@ -7,7 +7,6 @@ const Input = ({
   type,
   placeholder,
   refs,
-  required,
   onChange,
   name,
   errors,
@@ -23,7 +22,6 @@ const Input = ({
           name={name}
           placeholder={placeholder}
           ref={refs}
-          // required={required}
           onChange={onChange}
           errors={errors}
           sendIcon={sendIcon}

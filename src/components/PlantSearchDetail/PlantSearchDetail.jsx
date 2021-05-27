@@ -1,7 +1,6 @@
 import React from "react";
 import * as S from "./styled";
 import { useHistory } from "react-router-dom";
-// import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import sunny from "../../assets/svg/sunny.svg";
 import partlyCloudy from "../../assets/svg/partlyCloudy.svg";
 import cloudy from "../../assets/svg/cloudy.svg";
@@ -37,7 +36,6 @@ const PlantSearchDetail = ({
 
   return (
     <S.Container style={animationProps} onClick={handleOnClick}>
-      {/* <FavoriteButton plantId={id} /> */}
       <S.Image src={img} />
 
       <S.DetailsContainer>
@@ -46,10 +44,7 @@ const PlantSearchDetail = ({
           <p>Lorum ipsum</p>
         </S.LevelCard>
         <S.LabelContainer>
-          <S.LightCard>
-            {/* <p>Plant light: {light}</p> */}
-            {getLightIcon()}
-          </S.LightCard>
+          <S.LightCard>{getLightIcon()}</S.LightCard>
           <S.LightCard>
             <p>{temperature}°</p>
           </S.LightCard>
@@ -58,7 +53,6 @@ const PlantSearchDetail = ({
           </S.LightCard>
         </S.LabelContainer>
       </S.DetailsContainer>
-      {/* <button onClick={() => history.push(`/plants/${id}`)}>Read more</button> */}
     </S.Container>
   );
 };

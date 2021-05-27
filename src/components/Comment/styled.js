@@ -9,7 +9,6 @@ export const Comment = styled(animated.div)`
   padding: 20px;
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   margin-bottom: 1.5em;
   position: relative;
 `;

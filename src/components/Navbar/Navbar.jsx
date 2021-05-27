@@ -10,7 +10,7 @@ import { PlantContext } from "../../contexts/PlantContextProvider";
 
 const Navbar = () => {
   const history = useHistory();
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuth();
   const [error, setError] = useState();
   const dropdownRef = useRef(null);
   const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);

@@ -2,11 +2,9 @@ import styled from "styled-components";
 import { animated } from "react-spring";
 
 export const Container = styled(animated.div)`
-  /* max-width: 300px; */
   width: 350px;
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
   align-items: center;
 `;
 
@@ -20,15 +18,12 @@ export const Image = styled.img`
 `;
 
 export const DetailsContainer = styled.div`
-  /* display: flex;
-  flex-direction: column; */
   width: 100%;
 `;
 
 export const LabelContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 140px;
 `;
 
@@ -45,6 +40,7 @@ export const LightCard = styled.div`
   justify-content: center;
   max-width: 60px;
   font-size: 10px;
+  margin-right: 5px;
 `;
 
 export const Icon = styled.img`

@@ -3,7 +3,6 @@ import { animated } from "react-spring";
 
 export const Container = styled(animated.div)`
   max-width: 220px;
-  /* background-color: #fff; */
   border-radius: 10px;
   @media (max-width: 500px) {
     transform: scale(0.8);
@@ -47,19 +46,6 @@ export const Icon = styled.img`
   height: 20px;
 `;
 
-// export const WaterAlert = styled(animated.div)`
-//   border-radius: 7px;
-//   padding: 5px 10px;
-//   display: flex;
-//   flex-direction: row;
-//   margin-left: 10px;
-//   margin-top: 10px;
-//   align-items: center;
-//   justify-content: center;
-//   position: absolute;
-//   cursor: pointer;
-// `;
-
 export const WaterIcon = styled(animated.img)`
   z-index: 2;
   position: absolute;
@@ -70,5 +56,4 @@ export const WaterIcon = styled(animated.img)`
 
 export const NeedsWaterTitle = styled.h5`
   color: #fff;
-  /* position: absolute; */
 `;

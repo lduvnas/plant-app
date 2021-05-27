@@ -61,9 +61,6 @@ const DetailPage = (props) => {
 
           <S.PlantDetails>
             <S.PlantTitle>{plant.title}</S.PlantTitle>
-            {/* <S.CareLabel>
-            <S.CardTitle>{plant.careLevel}</S.CardTitle>
-          </S.CareLabel> */}
             <S.CardGrid>
               <S.FrequencyCard>
                 <S.Icon src={calender} alt="calender" />

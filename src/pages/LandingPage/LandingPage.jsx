@@ -10,8 +10,6 @@ const LandingPage = () => {
   return (
     <S.Container>
       <S.WelcomeContainer>
-        {/* <S.Title>Welcome</S.Title>
-        <S.SubTitle>keep your plants alive</S.SubTitle> */}
         <S.Welcome src={welcome} alt="welcome" />
         <S.Description>
           Don’t forget to take care of your plants. Lets grow your lovely plant

@@ -20,13 +20,10 @@ export const EditProfileContainer = styled.div`
   background-color: #fff;
   border-radius: 12px;
   width: 1000px;
-  /* padding: 30px; */
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 8em;
-  /* height: 500px; */
-  /* z-index: -2; */
 `;
 
 export const Header = styled.div`
@@ -37,20 +34,11 @@ export const Header = styled.div`
   border-radius: 12px 12px 0 0;
   width: 100%;
   position: relative;
-  /* padding-top: 3em;
-  padding-right: 20em; */
   min-height: 180px;
-`;
-
-export const ContentWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 export const ImageContainer = styled.div`
   display: flex;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   background-color: #fff;
@@ -86,11 +74,8 @@ export const Image = styled.img`
   height: 250px;
   object-fit: cover;
   border-radius: 50%;
-  /* padding: 10px;
-  background-color: #f7f7f7; */
   position: absolute;
   left: 50px;
-  /* top: -70px; */
 `;
 
 export const RemoveIcon = styled.img`
@@ -109,7 +94,6 @@ export const Input = styled.input`
   border: none;
   background-color: #f5f5f5;
   border-radius: 8px;
-  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
   color: ${COLORS.neutral_2};
   font-size: 12px;
   outline: none;

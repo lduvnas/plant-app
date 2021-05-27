@@ -19,19 +19,6 @@ export const Welcome = styled.img`
   margin-bottom: 1em;
 `;
 
-export const Title = styled.h1`
-  font-family: "Mulish", sans-serif;
-  font-size: 50px;
-  font-weight: 800;
-`;
-export const SubTitle = styled.h1`
-  font-family: "Mulish", sans-serif;
-  font-size: 50px;
-  font-weight: 800;
-  color: transparent;
-  border: solid 1px #455b57;
-`;
-
 export const Description = styled.p`
   max-width: 270px;
   margin-bottom: 1em;
