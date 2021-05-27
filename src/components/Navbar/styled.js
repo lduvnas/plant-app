@@ -6,13 +6,14 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 70%;
-  max-width: 1000px;
+  max-width: 1200px;
   min-height: 90px;
   background-color: ${COLORS.neutral_1};
   margin: 2em 0;
   margin-bottom: 6em;
   border-radius: 8px;
   padding: 0.5em 3em;
+  position: relative;
 `;
 
 export const Circle = styled.div`
@@ -26,7 +27,7 @@ export const Circle = styled.div`
   background-color: #ebebeb;
   border-radius: 50%;
   left: 50%;
-  top: 120px;
+  top: 90px;
   transform: translate(-50%, -50%);
   font-size: 12px;
   font-weight: 700;
@@ -64,8 +65,8 @@ export const Menu = styled.nav`
   background: #fff;
   border-radius: 8px;
   position: absolute;
-  top: 135px;
-  right: 15%;
+  top: 110px;
+  right: 0;
   width: 200px;
   height: 60px;
   opacity: ${(props) => (props.clicked ? "1" : "0")};
