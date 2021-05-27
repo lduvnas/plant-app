@@ -28,10 +28,7 @@ const DetailPage = (props) => {
       .doc(id)
       .onSnapshot((doc) => {
         if (doc.exists) {
-          console.log("running fetchPlant");
           setPlant(doc.data());
-        } else {
-          console.log("No such document!");
         }
       });
   };

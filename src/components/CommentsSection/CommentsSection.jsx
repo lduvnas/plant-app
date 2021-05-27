@@ -22,7 +22,6 @@ const CommentsSection = ({ plant, id }) => {
   const submitForm = async (data, e) => {
     e.preventDefault();
     e.target.reset();
-    console.log(data);
     return db
       .collection("plants")
       .doc(id)

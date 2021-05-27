@@ -25,7 +25,6 @@ const Navbar = () => {
       history.push("/login");
     } catch {
       setError("Failed to logout");
-      console.log(error);
     }
   };
 
@@ -53,6 +52,7 @@ const Navbar = () => {
           <p onClick={handleLogout}>Log out</p>
         </S.Menu>
       </div>
+      {error}
     </S.Container>
   );
 };

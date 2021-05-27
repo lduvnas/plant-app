@@ -28,27 +28,18 @@ const HomePage = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     await db.collection("users").doc(currentUser.uid).update({
       userImg: fileUrl,
       displayName: displayName,
     });
   };
 
-  console.log(fileUrl);
-
   const handleDelete = () => {
-    db.collection("users")
-      .doc(currentUser.uid)
-      .update({
-        userImg: null,
-      })
-      .then(() => {
-        console.log("User image deleted");
-      });
+    db.collection("users").doc(currentUser.uid).update({
+      userImg: null,
+    });
   };
 
-  console.log(displayName);
   return (
     <S.Container>
       <Navbar />

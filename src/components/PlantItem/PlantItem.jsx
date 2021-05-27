@@ -48,7 +48,6 @@ const PlantItem = ({
 
   const handleWatering = (id, e) => {
     e.stopPropagation();
-    console.log("watering");
     db.collection("plants").doc(id).update({
       nextWateringDate: newWateringDate,
     });

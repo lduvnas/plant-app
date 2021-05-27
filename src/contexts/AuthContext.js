@@ -29,17 +29,6 @@ export function AuthProvider({ children }) {
     return auth.signInWithEmailAndPassword(email, password);
   };
 
-  const sendResetPassword = (email) => {
-    auth
-      .sendPasswordResetEmail(email)
-      .then(function () {
-        console.log("email sent");
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-
   const logout = () => {
     return auth.signOut();
   };
@@ -48,14 +37,12 @@ export function AuthProvider({ children }) {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
       setLoading(false);
-      console.log("running onAuthStateChanged");
     });
 
     return unsubscribe;
   }, []);
 
   const addToUserCollection = (plantId) => {
-    console.log("running addToUserCollection");
     return db
       .collection("users")
       .doc(currentUser.uid)
@@ -74,7 +61,6 @@ export function AuthProvider({ children }) {
   };
 
   const removeFromUserCollection = (plantId) => {
-    console.log("running removeFromUserCollection");
     return db
       .collection("users")
       .doc(currentUser.uid)
@@ -92,7 +78,6 @@ export function AuthProvider({ children }) {
     currentUser,
     signupWithEmail,
     login,
-    sendResetPassword,
     logout,
     addToUserCollection,
     removeFromUserCollection,

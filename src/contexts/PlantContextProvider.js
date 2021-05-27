@@ -15,7 +15,6 @@ export default function PlantContextProvider({ children }) {
     return db.collection("plants").onSnapshot((snapshot) => {
       const plantData = [];
       snapshot.forEach((doc) => plantData.push({ ...doc.data(), id: doc.id }));
-      console.log("Fetching");
       setPlantListData(plantData);
     });
   };
@@ -26,10 +25,8 @@ export default function PlantContextProvider({ children }) {
         .collection("users")
         .doc(currentUser.uid)
         .onSnapshot((doc) => {
-          console.log("fetching favorites");
           setUserData(doc.data());
           setFavoritesListData(doc.data().favorites);
-          console.log("userdata:", doc.data());
         });
     }
   };

@@ -31,7 +31,6 @@ const Comment = ({
   });
 
   const handleDelete = (index) => {
-    console.log(index);
     return db
       .collection("plants")
       .doc(plantId)
