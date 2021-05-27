@@ -23,7 +23,8 @@ export const EditProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 8em;
+  margin-top: 3em;
+  margin-bottom: 3em;
 `;
 
 export const Header = styled.div`
@@ -46,10 +47,10 @@ export const ImageContainer = styled.div`
   padding: 20px 20px;
   padding-left: 130px;
   box-shadow: 0 4px 19px 0 rgba(0, 0, 0, 0.05);
-  position: absolute;
+  position: relative;
   min-width: 700px;
   min-height: 120px;
-  left: 150px;
+  /* left: 150px; */
   top: 100px;
 `;
 
@@ -67,6 +68,8 @@ export const Form = styled.form`
   width: 600px;
   display: flex;
   flex-direction: column;
+  padding: 1em;
+  padding-bottom: 3em;
 `;
 
 export const Image = styled.img`
@@ -79,11 +82,13 @@ export const Image = styled.img`
 `;
 
 export const RemoveIcon = styled.img`
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
-  left: -365px;
-  top: 120px;
+  position: absolute;
+  left: 65px;
+  top: 130px;
+  z-index: 2;
 `;
 
 export const Input = styled.input`

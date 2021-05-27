@@ -46,12 +46,13 @@ const HomePage = () => {
       <S.EditProfileContainer>
         <S.Header>
           <S.ImageContainer>
+            <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" />
             {userData.userImg ? (
               <S.Image src={userData.userImg} alt="" />
             ) : (
               <S.Image src={avatar} alt="avatar" />
             )}
-            <S.RemoveIcon onClick={handleDelete} src={close} alt="closeicon" />
+
             <S.ImageContainerDetails>
               <h1>{userData.displayName}</h1>
               <p>{currentUser.email}</p>
@@ -77,7 +78,7 @@ const HomePage = () => {
           <S.Input value="●●●●●●●●" />
           <S.Input value="●●●●●●●●" />
           <input type="file" onChange={onFileChange} />
-          <Button disabled={fileUrl === ""} title="upload to firebase" />
+          <Button disabled={fileUrl === ""} title="Update" />
         </S.Form>
       </S.EditProfileContainer>
     </S.Container>

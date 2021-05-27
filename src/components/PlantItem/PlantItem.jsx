@@ -72,8 +72,8 @@ const PlantItem = ({
         </S.LevelCard>
         <S.LightCard>{getLightIcon()}</S.LightCard>
       </S.DetailsContainer>
-      <p>Next watering: {nextWateringDate}</p>
-      <p>plant intervals: {wateringInterval}</p>
+      {/* <p>Next watering: {nextWateringDate}</p>
+      <p>plant intervals: {wateringInterval}</p> */}
     </S.Container>
   );
 };
