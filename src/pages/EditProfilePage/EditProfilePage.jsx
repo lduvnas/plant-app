@@ -75,8 +75,8 @@ const HomePage = () => {
             }}
           />
           <S.Input value={currentUser.email} />
-          <S.Input value="●●●●●●●●" />
-          <S.Input value="●●●●●●●●" />
+          <S.Input value="••••••••" />
+          <S.Input value="••••••••" />
           <input type="file" onChange={onFileChange} />
           <Button disabled={fileUrl === ""} title="Update" />
         </S.Form>

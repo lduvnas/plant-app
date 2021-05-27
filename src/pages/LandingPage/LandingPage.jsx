@@ -16,7 +16,9 @@ const LandingPage = () => {
           and manage your entire garden.
         </S.Description>
         <Button onClick={() => history.push("/signup")} title="Sign up" />
-        <Link to="/login">Already have an account? Login here</Link>
+        <p>
+          Already have an account? <Link to="/login">Login here</Link>
+        </p>
       </S.WelcomeContainer>
       <S.Image src={landing} alt="landing" />
     </S.Container>

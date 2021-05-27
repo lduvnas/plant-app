@@ -50,14 +50,11 @@ export const ContainerRight = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 110vh;
+  height: 100vh;
   position: fixed;
   top: 0;
   right: 0;
   transition: ease all 0.2s;
-  @media (max-width: 1500px) {
-    right: -220px;
-  }
   @media (max-width: 1000px) {
     left: -160px;
     top: 100px;

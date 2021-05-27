@@ -40,7 +40,7 @@ const SignupForm = () => {
           <Input
             type="text"
             name="displayName"
-            placeholder="Joe Doe"
+            placeholder="John Doe"
             refs={register}
             errors={errors.displayName?.message}
             label="Display name"

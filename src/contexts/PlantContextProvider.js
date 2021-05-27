@@ -12,11 +12,16 @@ export default function PlantContextProvider({ children }) {
   const { currentUser } = useAuth();
 
   const fetchPlants = () => {
-    return db.collection("plants").onSnapshot((snapshot) => {
-      const plantData = [];
-      snapshot.forEach((doc) => plantData.push({ ...doc.data(), id: doc.id }));
-      setPlantListData(plantData);
-    });
+    return db
+      .collection("plants")
+      .orderBy("itemID")
+      .onSnapshot((snapshot) => {
+        const plantData = [];
+        snapshot.forEach((doc) =>
+          plantData.push({ ...doc.data(), id: doc.id })
+        );
+        setPlantListData(plantData);
+      });
   };
 
   const fetchFavorites = () => {
