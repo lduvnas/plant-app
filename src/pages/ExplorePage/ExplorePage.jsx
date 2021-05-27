@@ -37,7 +37,7 @@ const ExplorePage = () => {
     if (searchTerm === "" || storedSearchTerms.includes(searchTerm)) {
       return null;
     } else {
-      if (storedSearchTerms.length >= 10) {
+      if (storedSearchTerms.length >= 5) {
         storedSearchTerms.shift();
       }
       storedSearchTerms.push(searchTerm);
