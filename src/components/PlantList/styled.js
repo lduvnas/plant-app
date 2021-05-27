@@ -11,4 +11,9 @@ export const Container = styled.div`
 
 export const Icon = styled.img`
   height: 70px;
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+    transition-duration: 0.5s;
+  }
 `;

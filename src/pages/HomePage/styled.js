@@ -9,21 +9,21 @@ export const Container = styled.div`
 `;
 
 export const Wave1 = styled.img`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -1;
   opacity: 0.8;
-  width: 20vw;
+  width: 25vw;
 `;
 
 export const Wave2 = styled.img`
-  position: fixed;
+  position: absolute;
   right: 0;
   bottom: -3%;
   z-index: -1;
   opacity: 0.8;
-  width: 15vw;
+  width: 30vw;
 `;
 
 export const Title = styled.h2`

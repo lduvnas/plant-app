@@ -48,8 +48,8 @@ const Navbar = () => {
 
         <S.Menu as="nav" ref={dropdownRef} clicked={isActive}>
           <S.ArrowUp />
-          <p onClick={() => history.push("/edit")}>Edit profile</p>
-          <p onClick={handleLogout}>Log out</p>
+          <S.Link onClick={() => history.push("/edit")}>Edit profile</S.Link>
+          <S.Link onClick={handleLogout}>Log out</S.Link>
         </S.Menu>
       </div>
       {error}

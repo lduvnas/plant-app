@@ -4,6 +4,7 @@ import { animated } from "react-spring";
 export const Container = styled(animated.div)`
   max-width: 220px;
   border-radius: 10px;
+  cursor: pointer;
   @media (max-width: 500px) {
     transform: scale(0.8);
   }

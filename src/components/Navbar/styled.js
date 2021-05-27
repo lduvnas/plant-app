@@ -82,3 +82,7 @@ export const Logo = styled.img`
   height: 23px;
   cursor: pointer;
 `;
+
+export const Link = styled.p`
+  cursor: pointer;
+`;
