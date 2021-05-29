@@ -50,7 +50,6 @@ export const ImageContainer = styled.div`
   position: relative;
   min-width: 700px;
   min-height: 120px;
-  /* left: 150px; */
   top: 100px;
 `;
 

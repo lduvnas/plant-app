@@ -20,10 +20,10 @@ export const Wave1 = styled.img`
 export const Wave2 = styled.img`
   position: absolute;
   right: 0;
-  bottom: -3%;
+  bottom: -10%;
   z-index: -1;
   opacity: 0.8;
-  width: 30vw;
+  width: 25vw;
 `;
 
 export const Title = styled.h2`

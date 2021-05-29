@@ -37,12 +37,9 @@ const PlantItem = ({
     if (light === "High") return <S.Icon src={sunny} alt="" />;
   };
 
-  const today = moment(Date()).format("MMMM DD, YYYY");
+  const hasPastWateringDate = moment().isSameOrAfter(nextWateringDate);
 
-  const hasPastWateringDate = moment(today).isSameOrAfter(nextWateringDate);
-
-  const newWateringDate = moment(today)
-    .clone()
+  const newWateringDate = moment()
     .add(wateringInterval, "days")
     .format("MMMM DD, YYYY");
 
@@ -72,8 +69,6 @@ const PlantItem = ({
         </S.LevelCard>
         <S.LightCard>{getLightIcon()}</S.LightCard>
       </S.DetailsContainer>
-      {/* <p>Next watering: {nextWateringDate}</p>
-      <p>plant intervals: {wateringInterval}</p> */}
     </S.Container>
   );
 };
