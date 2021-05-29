@@ -18,7 +18,7 @@ export const Wave1 = styled.img`
 `;
 
 export const Wave2 = styled.img`
-  position: absolute;
+  position: fixed;
   right: 0;
   bottom: -10%;
   z-index: -1;
